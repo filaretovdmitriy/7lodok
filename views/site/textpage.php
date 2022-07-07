@@ -1,4 +1,9 @@
 <?php
 /* @var $this app\components\View */
 ?>
-<?= $this->tree->getContent() ?>
+
+
+    <h1><?= $this->h1?></h1>
+    <?= $this->tree->getContent() ?>
+
+

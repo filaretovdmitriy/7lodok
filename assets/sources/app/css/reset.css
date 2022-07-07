@@ -46,6 +46,12 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-div{
+div, input{
 	box-sizing: border-box;
+}
+input[type="checkbox"]{
+	margin:0;
+}
+a{
+	cursor: pointer;
 }

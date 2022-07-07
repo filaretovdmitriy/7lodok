@@ -10,11 +10,16 @@ class AppAsset extends AssetBundle
     public $sourcePath = '@app/assets/sources/app';
     
     public $css = [
-        'fonts/flaticon/flaticon.css',
+        'css/reset.css',
+        'css/style.css',
+        'css/media.css',
+        'plugins/slick/slick.css',
+    
 
     ];
     public $js = [
-        'js/modernizr.custom.02163.js',
+        'plugins/slick/slick.min.js',
+        'js/scripts.js'
     
     ];
     public $depends = [

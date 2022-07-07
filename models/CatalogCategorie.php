@@ -41,6 +41,11 @@ class CatalogCategorie extends \app\components\db\ActiveRecordFiles
         return $this->hasMany(Catalog::class, ['catalog_categorie_id' => 'id']);
     }
 
+    public function getSubcatalogs()
+    {
+        return $this->hasMany(CatalogCategorie::class, ['pid' => 'id'])->andWhere(['status'=>1]);
+    }
+
     public function getCatalogCategorieProps()
     {
         return $this->hasMany(CatalogCategorieProp::class, ['catalog_categorie_id' => 'id']);

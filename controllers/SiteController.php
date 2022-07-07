@@ -33,8 +33,13 @@ class SiteController extends \app\components\controller\Frontend
     public function actionIndex()
     {
         $this->layout = 'index';
+        $Catalog = Catalog::find()
+                        ->andWhere([
+                            'is_popular' => 1,
+                            'status' => Catalog::STATUS_ACTIVE,
+                        ])->all();
         
-        return $this->render('index');
+        return $this->render('index',['catalog'=>$Catalog]);
     }
 
     public function actionPage()
@@ -150,6 +155,7 @@ class SiteController extends \app\components\controller\Frontend
 
     public function actionCatalog()
     {
+        
         $categories = CatalogCategorie::find()
                 ->andWhere(['status' => CatalogCategorie::STATUS_ACTIVE, 'pid' => 0])
                 ->orderBy(['sort' => SORT_ASC, 'name' => SORT_ASC])
@@ -162,6 +168,7 @@ class SiteController extends \app\components\controller\Frontend
 
     public function actionCatalog_categorie()
     {
+        $this->layout = 'catalog';
         $catalog_categorie_alias = \Yii::$app->request->get('catalog_categorie_alias');
         $get_prop = Yii::$app->request->get('prop');
 

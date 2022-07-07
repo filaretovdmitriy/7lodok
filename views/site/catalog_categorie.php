@@ -2,7 +2,31 @@
 /* @var $this app\components\View */
 
 use yii\widgets\LinkPager;
+use yii\widgets\Breadcrumbs;
 ?>
+
+                <aside>
+                    <nav class="catalog-left-menu">
+                        <?= app\widgets\CatalogMenu::widget() ?>
+                    </nav>
+                </aside>
+                <main>
+                <div class="inner-page-text">
+                        <?= Breadcrumbs::widget(
+                                [
+                                    'links' => \Yii::$app->controller->bread,
+                                    'activeItemTemplate' => '{link}',
+                                    'options' => ['class' => 'breadcrumbs'],
+                                    'itemTemplate' => '<li>{link}</li><span class="separator">-</span>',
+                                    'tag' => 'ul'
+                                ]
+                            ) ?>
+                        <div class="main-text-wrapper">
+                           
+                        </div>
+                    </div>
+                </main>
+
 <section class="col-sm-8 col-md-9 col-lg-10 content-center">
     <div class="divider divider-lg">
     </div>
