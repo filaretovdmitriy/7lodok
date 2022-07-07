@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /icms
+Disallow: /
+Host: www.example.com
