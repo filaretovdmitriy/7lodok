@@ -14,12 +14,14 @@ class AppAsset extends AssetBundle
         'css/style.css',
         'css/media.css',
         'plugins/slick/slick.css',
+        'css/nouislider.css',
     
 
     ];
     public $js = [
         'plugins/slick/slick.min.js',
-        'js/scripts.js'
+        'js/nouislider.js',
+        'js/scripts.js',
     
     ];
     public $depends = [
