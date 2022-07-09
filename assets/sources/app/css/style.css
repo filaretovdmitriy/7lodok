@@ -695,7 +695,32 @@ header .header-wrapper .basket .baket-caption {
   width: 30%;
 }
 
-.main-wrapper main .basket-wraper .basket-wrapper .basket-catalog-item {
+.main-wrapper main .basket-wraper .form-control {
+  height: auto;
+  border: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.main-wrapper main .basket-wraper .radio {
+  margin: 0;
+}
+
+.main-wrapper main .basket-wraper .radio input[type="radio"], .main-wrapper main .basket-wraper .radio-inline input[type="radio"], .main-wrapper main .basket-wraper .checkbox input[type="checkbox"], .main-wrapper main .basket-wraper .checkbox-inline input[type="checkbox"] {
+  position: relative;
+  margin: 0;
+  left: auto;
+}
+
+.main-wrapper main .basket-wraper .form-group {
+  margin: 0;
+}
+
+.main-wrapper main .basket-wraper .basket-items-wrapper {
+  margin-bottom: 20px;
+}
+
+.main-wrapper main .basket-wraper .basket-items-wrapper .basket-catalog-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -709,7 +734,7 @@ header .header-wrapper .basket .baket-caption {
           align-items: center;
 }
 
-.main-wrapper main .basket-wraper .basket-wrapper .basket-catalog-item .basket-item-count {
+.main-wrapper main .basket-wraper .basket-items-wrapper .basket-catalog-item .basket-item-count {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -724,12 +749,12 @@ header .header-wrapper .basket .baket-caption {
   margin-right: 10px;
 }
 
-.main-wrapper main .basket-wraper .basket-wrapper .basket-catalog-item .basket-item-count .button-change-count {
+.main-wrapper main .basket-wraper .basket-items-wrapper .basket-catalog-item .basket-item-count .button-change-count {
   width: 25%;
   text-align: center;
 }
 
-.main-wrapper main .basket-wraper .basket-wrapper .basket-catalog-item .basket-item-count input[type="text"] {
+.main-wrapper main .basket-wraper .basket-items-wrapper .basket-catalog-item .basket-item-count input[type="text"] {
   width: 50%;
   background: #f9f9f9;
   border: 0;
@@ -737,6 +762,64 @@ header .header-wrapper .basket .baket-caption {
   -webkit-box-shadow: none;
           box-shadow: none;
   text-align: center;
+}
+
+.main-wrapper main .basket-wraper .basket-order-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper {
+  width: 75%;
+}
+
+.main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-title {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-payment-delivery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-payment-wrapper {
+  width: 50%;
+}
+
+.main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-delivery-wrapper {
+  width: 50%;
+}
+
+.main-wrapper main .basket-wraper .basket-order-wrapper .basket-total {
+  width: 25%;
+  padding: 10px;
+  border: 1px solid #eeeeee;
+}
+
+.main-wrapper main .basket-wraper .basket-order-wrapper .basket-total .basket-total-tab {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.main-wrapper main .basket-wraper .basket-order-wrapper .basket-total .basket-total-tab .basket-total-title {
+  font-weight: 600;
 }
 
 footer {

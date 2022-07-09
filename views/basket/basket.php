@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use app\components\IcmsHelper;
 use yii\widgets\ActiveForm;
 use app\widgets\RadioList;
+use app\assets\AppAsset;
 ?>
 
     <h1><?= $this->h1 ?></h1>
@@ -18,141 +19,94 @@ use app\widgets\RadioList;
             ]);
             ?>
 
-            <div class="basket-wrapper">
-                
-                <?php foreach ($goods as $orderGoodId => $good) { ?>
-                    <div class="basket-catalog-item"  id="order-good-<?= $orderGoodId ?>">                        
-                            <div class="backet-image">
-                        <?php
-                            if (!empty($good->image)) {
-                                echo Html::a(
-                                        Html::img(IcmsHelper::getResizePath($good->image, 170, 170), ['class' => 'img-responsive', 'alt' => $good->name]), $good->url
-                                );
-                            }
-                        ?>
-                        </div>
-                        <div class="backet-item-name">
-                            <a href="<?= $good->url ?>"><?= $good->name ?></a>
-                            <?php if (!empty($good->article)) { ?>
-                                <span><?= $good->article ?></span>
-                            <?php } ?>
-                        </div>
-                        <div class="basket-item-price"  id="product-price-<?= $orderGoodId ?>"><?= number_format($good->price, 2, '.', ' ') ?></div>
-                        <div class="basket-item-count">
-                            <div class="button-change-count">-</div>
-                            <input type='text' class="form-control input-quantity update-order-count" data-id="<?= $orderGoodId ?>" value="<?= $good->quant ?>" id='quantity-field-<?= $orderGoodId ?>'/>
-                            <div class="button-change-count">+</div>
-                        </div>
-                        <div id="product-summ-<?= $orderGoodId ?>" class="basket-item-sum"><?= number_format($good->summ, 2, '.', ' ') ?></div>
-                        <div class="basket-item-delete"><button type="button" class="close basket-delete-good" data-id="<?= $orderGoodId ?>"><span class="sr-only">Удалить</span></button></div>
-                    </div>
-                <?}?>
-            </div>
-
-            <div class="basket-order-wrapper">
-                <div class="basket-delivery-payment-wrappert">
-
-                </div>
-                <div class="basket-total">
-                
-                    Сумма
-                    <span id="basket-good-summ"><?= number_format($order->total_price - $order->delivery_price, 2, '.', ' ') ?></span>
-                               
-                    Доставка
-                    <span class="text-right" id="basket-delivery-price"><?= $order->delivery_price != 0 ? number_format($order->delivery_price, 2, '.', ' ') : '- - - -' ?></span>
-                                
-                    Итого
-                    <span id="basket-total-price"><?= number_format($order->total_price, 2, '.', ' ') ?></span>
-                </div>
-            </div>
-
-            
-            <div class="divider divider-sm">
-            </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-6">
-                    <div class="rect-nohover">
-                        <h3>Способ получения товара</h3>
-                        <div class="col col-sm-12 col-md-6" id="basket-delivery-selector">
-                            <?=
-                            $form->field($order, 'catalog_delivery_id')->widget(RadioList::class, [
-                                'items' => IcmsHelper::map($deliverys, 'id', 'name'),
-                                'itemsOptions' => IcmsHelper::modelAttributesToData($deliverys, 'id', ['have_address']),
-                            ])->label(false);
+                <div class="basket-items-wrapper">
+                    
+                    <?php foreach ($goods as $orderGoodId => $good) { ?>
+                        <div class="basket-catalog-item"  id="order-good-<?= $orderGoodId ?>">                        
+                                <div class="backet-image">
+                            <?php
+                                if (!empty($good->image)) {
+                                    echo Html::a(
+                                            Html::img(IcmsHelper::getResizePath($good->image, 170, 170), ['class' => 'img-responsive', 'alt' => $good->name]), $good->url
+                                    );
+                                }
                             ?>
+                            </div>
+                            <div class="backet-item-name">
+                                <a href="<?= $good->url ?>"><?= $good->name ?></a>
+                                <?php if (!empty($good->article)) { ?>
+                                    <span><?= $good->article ?></span>
+                                <?php } ?>
+                            </div>
+                            <div class="basket-item-price"  id="product-price-<?= $orderGoodId ?>"><?= number_format($good->price, 2, '.', ' ') ?></div>
+                            <div class="basket-item-count">
+                                <div class="button-change-count">-</div>
+                                <input type='text' class="form-control input-quantity update-order-count" data-id="<?= $orderGoodId ?>" value="<?= $good->quant ?>" id='quantity-field-<?= $orderGoodId ?>'/>
+                                <div class="button-change-count">+</div>
+                            </div>
+                            <div id="product-summ-<?= $orderGoodId ?>" class="basket-item-sum"><?= number_format($good->summ, 2, '.', ' ') ?></div>
+                            <div class="basket-item-delete"><button type="button" class="close basket-delete-good" data-id="<?= $orderGoodId ?>"><span class="sr-only">Удалить</span></button></div>
                         </div>
-                        <div class="col col-sm-12 col-md-6">
-                            <?php foreach ($deliverys as $delivery) { ?>
-                                <div id="basket-delivery-desctiption-<?= $delivery->id ?>" class="basket-delivery-desctiption" style="<?= $order->catalog_delivery_id != $delivery->id ? 'display: none' : '' ?>">
-                                    <?= $delivery->content ?>
+                    <?}?>
+                </div>
+
+                <div class="basket-order-wrapper">
+                    <div class="basket-form-wrapper">
+                        <div class="basket-form-payment-delivery">
+                            <div class="basket-form-payment-wrapper">
+                                <div class="basket-form-title">
+                                    <img src="<?= AppAsset::path('images/delivery-icon.svg') ?>">
+                                    <span>Способы доставки</span>
+                                    
                                 </div>
-                            <?php } ?>
-                        </div>
-                        <div class="col col-md-12" id="basket-delivery-address" style="<?= $order->delivery->have_address != 1?'display: none':'' ?>">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <?= $form->field($order, 'user_city')->textInput([
-                                        'placeholder' => 'Город',
-                                        'class' => 'form-control required',
-                                        'value' => !Yii::$app->user->isGuest?Yii::$app->user->identity->city:''
-                                    ])->label(false) ?>
+                                <div class="basket-form-payment">
+                                        <?=$form->field($order, 'catalog_delivery_id')->widget(RadioList::class, [
+                                            'items' => IcmsHelper::map($deliverys, 'id', 'name'),
+                                            'itemsOptions' => IcmsHelper::modelAttributesToData($deliverys, 'id', ['have_address']),
+                                        ])->label(false);
+                                        ?>
+                                        <?php foreach ($deliverys as $delivery) { ?>
+                                            <div id="basket-delivery-desctiption-<?= $delivery->id ?>" class="basket-delivery-desctiption" style="<?= $order->catalog_delivery_id != $delivery->id ? 'display: none' : '' ?>">
+                                                <?= $delivery->content ?>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                            </div>
+                            <div class="basket-form-delivery-wrapper">
+                                <div class="basket-form-title">
+                                    <img src="<?= AppAsset::path('images/payment-icon.svg') ?>">
+                                    <span>Способы оплаты</span>
                                 </div>
-                                <div class="col-sm-6">
-                                    <?= $form->field($order, 'user_street')->textInput([
-                                        'placeholder' => 'Улица/Шоссе',
-                                        'class' => 'form-control',
-                                        'value' => !Yii::$app->user->isGuest?Yii::$app->user->identity->street:''
-                                    ])->label(false) ?>
-                                </div>
-                                <div class="col-sm-6">
-                                    <?= $form->field($order, 'user_home')->textInput([
-                                        'placeholder' => 'Дом',
-                                        'class' => 'form-control',
-                                        'value' => !Yii::$app->user->isGuest?Yii::$app->user->identity->home:''
-                                    ])->label(false) ?>
+                                <div class="basket-form-delivery">
+                                    <?=
+                                    $form->field($order, 'catalog_pay_id')->widget(RadioList::class, [
+                                        'items' => IcmsHelper::map($pays, 'id', 'name'),
+                                        'itemsOptions' => IcmsHelper::modelAttributesToData($pays, 'id', ['id']),
+                                    ])->label(false)
+                                    ?>
+                                    <?php foreach ($pays as $pay) { ?>
+                                        <div id="basket-pay-desctiption-<?= $pay->id ?>" class="basket-pay-desctiption" style="<?= $order->catalog_pay_id != $pay->id ? 'display: none' : '' ?>">
+                                            <?= $pay->content ?>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 ">
-                    <div class="rect-nohover">
-                        <h3>Способ оплаты</h3>
-                        <div class="col col-sm-12 col-md-6" id="basket-pay-selector">
+                        <div class="basket-form-user">
+                            <div class="basket-form-title">
+                            <img src="<?= AppAsset::path('images/profile-icon.svg') ?>">
+                                <span>Покупатель</span>
+                            </div>
+                            <div class="basket-form-user">
+                                
                             <?=
-                            $form->field($order, 'catalog_pay_id')->widget(RadioList::class, [
-                                'items' => IcmsHelper::map($pays, 'id', 'name'),
-                                'itemsOptions' => IcmsHelper::modelAttributesToData($pays, 'id', ['id']),
-                            ])->label(false)
-                            ?>
-                        </div>
-                        <div class="col col-sm-12 col-md-6">
-                            <?php foreach ($pays as $pay) { ?>
-                                <div id="basket-pay-desctiption-<?= $pay->id ?>" class="basket-pay-desctiption" style="<?= $order->catalog_pay_id != $pay->id ? 'display: none' : '' ?>">
-                                    <?= $pay->content ?>
-                                </div>
-                            <?php } ?>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 col-md-8">
-                    <div class="rect-nohover">
-                        <h3>Контактная информация</h3>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <?=
                                 $form->field($order, 'user_name')->textInput([
                                     'placeholder' => 'Обращение',
                                     'class' => 'form-control',
                                     'value' => !Yii::$app->user->isGuest ? Yii::$app->user->identity->name : ''
                                 ])->label(false)
                                 ?>
-                            </div>
-                            <div class="col-sm-6">
+                            
                                 <?=
                                 $form->field($order, 'user_email')->textInput([
                                     'placeholder' => 'Email',
@@ -160,8 +114,7 @@ use app\widgets\RadioList;
                                     'value' => !Yii::$app->user->isGuest ? Yii::$app->user->identity->email : ''
                                 ])->label(false)
                                 ?>
-                            </div>
-                            <div class="col-sm-6">
+                            
                                 <?=
                                 $form->field($order, 'user_phone')->textInput([
                                     'placeholder' => 'Телефон',
@@ -169,77 +122,78 @@ use app\widgets\RadioList;
                                     'value' => !Yii::$app->user->isGuest ? Yii::$app->user->identity->phone : ''
                                 ])->label(false)
                                 ?>
-                            </div>
-                            <div class="col-sm-12">
+                            
                                 <?=
                                 $form->field($order, 'comment')->textarea([
                                     'placeholder' => 'Комментарий',
                                     'class' => 'form-control'
                                 ])->label(false)
                                 ?>
-                            </div>
+
+                                <div id="basket-delivery-address" style="<?= $order->delivery->have_address != 1?'display: none':'' ?>">
+                                    <?= $form->field($order, 'user_city')->textInput([
+                                        'placeholder' => 'Город',
+                                        'class' => 'form-control required',
+                                        'value' => !Yii::$app->user->isGuest?Yii::$app->user->identity->city:''
+                                    ])->label(false) ?>
+                            
+                                    <?= $form->field($order, 'user_street')->textInput([
+                                        'placeholder' => 'Улица/Шоссе',
+                                        'class' => 'form-control',
+                                        'value' => !Yii::$app->user->isGuest?Yii::$app->user->identity->street:''
+                                    ])->label(false) ?>
+                                
+                                    <?= $form->field($order, 'user_home')->textInput([
+                                        'placeholder' => 'Дом',
+                                        'class' => 'form-control',
+                                        'value' => !Yii::$app->user->isGuest?Yii::$app->user->identity->home:''
+                                    ])->label(false) ?>
+                                </div>
+                                    
+                            
                             <?php if (Yii::$app->user->isGuest === false) { ?>
-                                <div class="col-sm-12">
+                               
                                     <label class="checkbox text-left">
                                         <input name="save_user_info" type="checkbox" checked>
                                         <i></i>
                                         Сохранить для следующих заказов
                                     </label>
-                                </div>
+                               
                             <?php } ?>
+                      
+                            </div>
                         </div>
+                        
+                    </div>
+                    <div class="basket-total">
+                        <div class="basket-total-tab">
+                            <span class="basket-total-title">Сумма</span>
+                            <span id="basket-good-summ"><?= number_format($order->total_price - $order->delivery_price, 2, '.', ' ') ?></span>
+                        </div>
+
+                        <div class="basket-total-tab">
+                            <span class="basket-total-title">Доставка</span>
+                            <span id="basket-delivery-price"><?= $order->delivery_price != 0 ? number_format($order->delivery_price, 2, '.', ' ') : '- - - -' ?></span>
+                        </div>
+
+                        <div class="basket-total-tab">
+                            <span class="basket-total-title">Итого</span>
+                            <span id="basket-total-price"><?= number_format($order->total_price, 2, '.', ' ') ?></span>
+                        </div>
+                        
+                        <button class="btn" type="submit">Оформить заказ</button>
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-md-4 ">
-                    <div class="rect-nohover">
-                        <table class="table table-total">
-                            <tr>
-                                <th class="text-right">
-                                    Сумма
-                                </th>
-                                <th class="td-divider">
-                                </th>
-                                <th>
-                                    <span id="basket-good-summ"><?= number_format($order->total_price - $order->delivery_price, 2, '.', ' ') ?></span>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th class="text-right">
-                                    Доставка
-                                </th>
-                                <th class="td-divider">
-                                </th>
-                                <th>
-                                    <span class="text-right" id="basket-delivery-price"><?= $order->delivery_price != 0 ? number_format($order->delivery_price, 2, '.', ' ') : '- - - -' ?></span>
-                                </th>
-                            </tr>
-                            <tr>
-                                <td class="text-right">
-                                    <h2>Итого</h2>
-                                </td>
-                                <th class="td-divider">
-                                </th>
-                                <td>
-                                    <h2><span id="basket-total-price"><?= number_format($order->total_price, 2, '.', ' ') ?></span></h2>
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="text-center">
-                            <button class="btn btn-cool btn-md invert-color" type="submit">Оформить заказ</button>
-                            <div class="divider divider-sm">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            
+            
+       
 
         <?php $form->end() ?>
     <?php } ?>
+</div>
 
-
-<?php if (Yii::$app->session->getFlash('ORDER_SEND', false) === false) { ?>
+<?php /* if (Yii::$app->session->getFlash('ORDER_SEND', false) === false) { ?>
     <div style="<?= count($goods) > 0 ? 'display: none' : '' ?>" id="basket-empty-message">
         <div class="divider-lg"></div>
         <div class="divider-lg"></div>
@@ -257,4 +211,4 @@ use app\widgets\RadioList;
     <div class="alert alert-success fade in">
         <strong>Заказ оформлен!</strong> Обо всех изменениях статусов заказа Вам придёт уведомление на почтовый ящик, указанный при оформлении заказа
     </div>
-<?php } ?>
+<?php } */?>

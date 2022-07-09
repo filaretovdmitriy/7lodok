@@ -556,7 +556,30 @@ header{
         }
 
         .basket-wraper{
-            .basket-wrapper{
+
+            .form-control{
+                height: auto;
+                border: 0;
+                box-shadow:none;
+                
+            }
+
+            .radio{
+                margin:0;
+            }
+
+            .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"]{
+                position: relative;
+                margin: 0;
+                left: auto;
+            }
+
+            .form-group{
+                margin:0;
+            }
+
+            .basket-items-wrapper{
+                margin-bottom: 20px;
                 .basket-catalog-item{
                     display: flex;
                     justify-content: space-between;
@@ -589,7 +612,43 @@ header{
             }
 
             .basket-order-wrapper{
-                
+                display: flex;
+                justify-content: space-between;
+                .basket-form-wrapper{
+                    width: 75%;
+                    
+                    .basket-form-title{
+                        justify-content: flex-start;
+                        font-size: 16px;
+                        font-weight: 600;
+                    }
+
+                    .basket-form-payment-delivery{
+                        display: flex;
+                        justify-content: space-between;
+                    }
+
+                    .basket-form-payment-wrapper{
+                        width: 50%;
+                    }
+
+                    .basket-form-delivery-wrapper{
+                        width: 50%;
+                    }
+                }
+                .basket-total{
+                    width: 25%;
+                    padding: 10px;
+                    border:1px solid $light-gray;
+                    .basket-total-tab{
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 20px;
+                        .basket-total-title{
+                            font-weight: 600;
+                        }
+                    }
+                }
             }
         }
     }
