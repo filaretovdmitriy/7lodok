@@ -492,9 +492,106 @@ header{
             }
         }
 
+        .catalog-element-item{
+            .catalog-element-info{
+                display: flex;
+                justify-content: space-between;
+                border:1px solid $light-gray;
+                margin-bottom: 20px;
+                .slider-image-wrapper{
+                    width: 50%;
+                }
+                .catalog-element-description{
+                    width: 50%;
+                    padding: 10px;
+                    .catalog-description-content{
 
+                    }
+                    .catalog-element-price{
+                        font-size: 20px;
+                        font-weight: 600;
+                        margin-bottom: 20px;
+                    }
 
+                    .catalog-buy-buttons{
 
+                        display: flex;
+                        justify-content: flex-start;
+                        
+
+                        .buy-count-buttons{
+                            display: flex;
+                            justify-content: center;
+                            align-items:center;
+                            width: 30%;
+                            border:1px solid $light-gray;
+                            margin-right: 10px;
+
+                            .button-change-count{
+                                width: 25%;
+                                text-align: center;
+                            }
+                            input[type="text"]{
+                                width: 50%;
+                                background:$light-gray1;
+                                border:0;
+                                border-radius:0;
+                                box-shadow:none;
+                                text-align: center;
+                            }
+                        }
+
+                        .basket-add-item{
+                            display: flex;
+                            background:$light-color;
+                            color:#ffffff;
+                            justify-content: center;
+                            align-items:center;
+                            border-radius:4px;
+                            width: 30%;
+                        }
+                    }
+                }
+            }
+        }
+
+        .basket-wraper{
+            .basket-wrapper{
+                .basket-catalog-item{
+                    display: flex;
+                    justify-content: space-between;
+                    border:1px solid $light-gray;
+                    padding: 10px;
+                    align-items:center;
+
+                    .basket-item-count{
+                        display: flex;
+                        justify-content: center;
+                        align-items:center;
+                        width: 20%;
+                        border:1px solid $light-gray;
+                        margin-right: 10px;
+
+                        .button-change-count{
+                            width: 25%;
+                            text-align: center;
+                        }
+                        input[type="text"]{
+                            width: 50%;
+                            background:$light-gray1;
+                            border:0;
+                            border-radius:0;
+                            box-shadow:none;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+
+            .basket-order-wrapper{
+                
+            }
+        }
     }
 }
 

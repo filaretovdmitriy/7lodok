@@ -307,7 +307,7 @@ class SiteController extends \app\components\controller\Frontend
         if (empty($catalog)) {
             throw new \yii\web\NotFoundHttpException();
         }
-        $this->layout = "item";
+        $this->layout = "textpage";
         $this->view->title = $catalog->name;
         if (!empty($catalog->title_seo)) {
             $this->view->title = $catalog->title_seo;

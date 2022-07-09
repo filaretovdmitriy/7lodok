@@ -7,7 +7,7 @@ $(document).ready(function () {
         fade: true,
     });
 });
-
+/*
 var html5Slider = document.getElementById('input-range');
 var inputNumbermin = document.getElementById('input-number-min');
 var inputNumbermax = document.getElementById('input-number-max');
@@ -41,4 +41,4 @@ inputNumbermin.addEventListener('change', function () {
 
 inputNumbermax.addEventListener('change', function () {
     html5Slider.noUiSlider.set([null, this.value]);
-});
+});*/

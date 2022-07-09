@@ -6,9 +6,13 @@ use app\components\IcmsHelper;
 use yii\widgets\ActiveForm;
 use app\widgets\RadioList;
 ?>
-
-    <h1><?= $this->h1 ?></h1>
-    <div class="basket-wraper">
+<div class="container">
+    <div class="subtitle">
+        <div>
+            <span><?= $this->h1 ?></span>
+        </div>
+    </div>
+    <div id="baskert-wraper">
         <?php if (count($goods) > 0) { ?>
             <?php
             $form = ActiveForm::begin([
@@ -20,53 +24,86 @@ use app\widgets\RadioList;
 
             <div class="basket-wrapper">
                 
-                <?php foreach ($goods as $orderGoodId => $good) { ?>
-                    <div class="basket-catalog-item"  id="order-good-<?= $orderGoodId ?>">                        
-                            <div class="backet-image">
-                        <?php
-                            if (!empty($good->image)) {
-                                echo Html::a(
-                                        Html::img(IcmsHelper::getResizePath($good->image, 170, 170), ['class' => 'img-responsive', 'alt' => $good->name]), $good->url
-                                );
-                            }
-                        ?>
-                        </div>
-                        <div class="backet-item-name">
-                            <a href="<?= $good->url ?>"><?= $good->name ?></a>
-                            <?php if (!empty($good->article)) { ?>
-                                <span><?= $good->article ?></span>
-                            <?php } ?>
-                        </div>
-                        <div class="basket-item-price"  id="product-price-<?= $orderGoodId ?>"><?= number_format($good->price, 2, '.', ' ') ?></div>
-                        <div class="basket-item-count">
-                            <div class="button-change-count">-</div>
-                            <input type='text' class="form-control input-quantity update-order-count" data-id="<?= $orderGoodId ?>" value="<?= $good->quant ?>" id='quantity-field-<?= $orderGoodId ?>'/>
-                            <div class="button-change-count">+</div>
-                        </div>
-                        <div id="product-summ-<?= $orderGoodId ?>" class="basket-item-sum"><?= number_format($good->summ, 2, '.', ' ') ?></div>
-                        <div class="basket-item-delete"><button type="button" class="close basket-delete-good" data-id="<?= $orderGoodId ?>"><span class="sr-only">Удалить</span></button></div>
+                    <?php foreach ($goods as $orderGoodId => $good) { ?>
+                <div class="basket-catalog-item"  id="order-good-<?= $orderGoodId ?>">                        
+                        <div class="backet-image">
+                    <?php
+                        if (!empty($good->image)) {
+                            echo Html::a(
+                                    Html::img(IcmsHelper::getResizePath($good->image, 170, 170), ['class' => 'img-responsive', 'alt' => $good->name]), $good->url
+                            );
+                        }
+                    ?>
                     </div>
-                <?}?>
-            </div>
-
-            <div class="basket-order-wrapper">
-                <div class="basket-delivery-payment-wrappert">
-
+                    <div class="backet-item-name">
+                        <a href="<?= $good->url ?>"><?= $good->name ?></a>
+                        <?php if (!empty($good->article)) { ?>
+                            <span><?= $good->article ?></span>
+                        <?php } ?>
+                    </div>
+                    <div class="basket-item-price"  id="product-price-<?= $orderGoodId ?>"><?= number_format($good->price, 2, '.', ' ') ?></div>
+                    <div class="basket-item-count">
+                        <div class="button-change-count">-</div>
+                        <input type='text' class="form-control input-quantity update-order-count" data-id="<?= $orderGoodId ?>" value="<?= $good->quant ?>" id='quantity-field-<?= $orderGoodId ?>'/>
+                        <div class="button-change-count">+</div>
+                    </div>
+                    <div id="product-summ-<?= $orderGoodId ?>" class="basket-item-sum"><?= number_format($good->summ, 2, '.', ' ') ?></div>
+                    <div class="basket-item-delete"><button type="button" class="close basket-delete-good" data-id="<?= $orderGoodId ?>"><span class="sr-only">Удалить</span></button></div>
                 </div>
-                <div class="basket-total">
+                    <?}?>
                 
-                    Сумма
-                    <span id="basket-good-summ"><?= number_format($order->total_price - $order->delivery_price, 2, '.', ' ') ?></span>
-                               
-                    Доставка
-                    <span class="text-right" id="basket-delivery-price"><?= $order->delivery_price != 0 ? number_format($order->delivery_price, 2, '.', ' ') : '- - - -' ?></span>
-                                
-                    Итого
-                    <span id="basket-total-price"><?= number_format($order->total_price, 2, '.', ' ') ?></span>
-                </div>
+                    
             </div>
 
-            
+            <div class="rect-nohover">
+                <div class="inside">
+                    <table class="table-shop" id="basket-table">
+                        <thead>
+                            <tr>
+                                <th colspan="3">Товар</th>
+                                <th>Цена</th>
+                                <th>Количество</th>
+                                <th>Стоимость</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($goods as $orderGoodId => $good) { ?>
+                                <tr id="order-good-<?= $orderGoodId ?>">
+                                    <td class="product-in-table image-table center">
+                                        <?php
+                                        if (!empty($good->image)) {
+                                            echo Html::a(
+                                                    Html::img(IcmsHelper::getResizePath($good->image, 170, 170), ['class' => 'img-responsive', 'alt' => $good->name]), $good->url
+                                            );
+                                        }
+                                        ?>
+                                    </td>
+                                    <td class="product-in-table">
+                                        <h3><a href="<?= $good->url ?>"><?= $good->name ?></a></h3>
+                                        <?php if (!empty($good->article)) { ?>
+                                            <span><?= $good->article ?></span>
+                                        <?php } ?>
+                                    </td>
+                                    <td class="product-in-table-sku">
+                                        <?php foreach ($good->sku as $skuId => $skuProps) { ?>
+                                            <?= $skuProps['name'] ?>: <?= $skuProps['value'] ?><br>
+                                        <?php } ?>
+                                    </td>
+                                    <td id="product-price-<?= $orderGoodId ?>"><?= number_format($good->price, 2, '.', ' ') ?></td>
+                                    <td class="center">
+                                        <input type='text' class="form-control input-quantity update-order-count" data-id="<?= $orderGoodId ?>" value="<?= $good->quant ?>" id='quantity-field-<?= $orderGoodId ?>'/>
+                                    </td>
+                                    <td id="product-summ-<?= $orderGoodId ?>" class="shop-red"><?= number_format($good->summ, 2, '.', ' ') ?></td>
+                                    <td class="center">
+                                        <button type="button" class="close basket-delete-good" data-id="<?= $orderGoodId ?>"><span>&times;</span><span class="sr-only">Удалить</span></button>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             <div class="divider divider-sm">
             </div>
             <div class="row">
@@ -237,7 +274,7 @@ use app\widgets\RadioList;
 
         <?php $form->end() ?>
     <?php } ?>
-
+</div>
 
 <?php if (Yii::$app->session->getFlash('ORDER_SEND', false) === false) { ?>
     <div style="<?= count($goods) > 0 ? 'display: none' : '' ?>" id="basket-empty-message">

@@ -93,12 +93,24 @@ use yii\widgets\Breadcrumbs;
                                 
                                 <div class="catalog-item">
                                     <div class="catalog-shadow-item">
-                                        <a class="image-wrapper">
+                                        <a class="image-wrapper" href="<?= \yii\helpers\Url::to([
+                                'site/catalog_element',
+                                'catalog_categorie_alias' => $categorie->alias,
+                                'catalog_id' => $item->id,
+                                'catalog_alias' => $item->alias,
+                            ]) ?>">
                                         <?php if (!empty($item->image)) { ?>
                                             <img class="img-responsive img-default" src="<?= $item->getResizePath('image', 170, 220) ?>" alt="<?= $item->name ?>">
                                         <?php } ?>
                                         </a>
-                                        <a class="item-name"><?= $item->name ?></a>
+                                        <a class="item-name" href="<?= \yii\helpers\Url::to([
+                                                'site/catalog_element',
+                                                'catalog_categorie_alias' => $categorie->alias,
+                                                'catalog_id' => $item->id,
+                                                'catalog_alias' => $item->alias,
+                                            ]) ?>">
+                                            <?= $item->name ?>
+                                        </a>
                                         <div class="item-price"><?= $item->price ?>руб</div>
                                         <div class="item-button add-to-cart">В корзину</div>
                                     </div>

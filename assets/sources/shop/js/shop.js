@@ -140,7 +140,7 @@ $(function($) {
         if (!checkSkuProps(true)) {
             return false;
         }
-        $.post('/ajax/basket/add_to_cart', {
+        $.post('/basket/add_to_cart', {
             'elemId': elemId,
             'elemSkuId': elemSkuId,
             'elemQuant': elemQuant
