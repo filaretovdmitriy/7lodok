@@ -50,6 +50,24 @@ input[type="text"] {
   color: #969696;
 }
 
+textarea, textarea.form-control {
+  background: #eeeeee;
+  border: 0;
+  border-radius: 4px;
+  padding: 10px 13px;
+  color: #969696;
+}
+
+.btn {
+  background: #6c8cc7;
+  color: #ffffff;
+}
+
+.btn:hover {
+  background: #546c99;
+  color: #f9f9f9;
+}
+
 header .header-wrapper {
   padding: 16px;
   display: -webkit-box;
@@ -771,18 +789,36 @@ header .header-wrapper .basket .baket-caption {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  gap: 10px;
 }
 
 .main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper {
   width: 75%;
 }
 
+.main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper .radio {
+  margin-bottom: 10px;
+}
+
 .main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  font-size: 16px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 20px;
   font-weight: 600;
+  color: #1d2029;
+  margin-bottom: 20px;
+}
+
+.main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-title img {
+  max-width: 30px;
+  margin-right: 10px;
 }
 
 .main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-payment-delivery {
@@ -792,14 +828,34 @@ header .header-wrapper .basket .baket-caption {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  gap: 10px;
 }
 
 .main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-payment-wrapper {
   width: 50%;
+  border: 1px solid #eeeeee;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-delivery-wrapper {
   width: 50%;
+  border: 1px solid #eeeeee;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-user-wrapper {
+  border: 1px solid #eeeeee;
+  padding: 10px;
+}
+
+.main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-user-wrapper .form-group {
+  margin-bottom: 20px;
+}
+
+.main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper .basket-form-user-wrapper .control-label {
+  margin-bottom: 10px;
 }
 
 .main-wrapper main .basket-wraper .basket-order-wrapper .basket-total {

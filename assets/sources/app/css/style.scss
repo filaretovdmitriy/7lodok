@@ -63,6 +63,24 @@ input[type="text"]{
     color: $input-color;
 }
 
+textarea,  textarea.form-control{
+    background: $light-gray;
+    border:0;
+    border-radius: 4px;
+    padding: 10px 13px;
+    color: $input-color;
+}
+
+.btn{
+    background:$light-color;
+    color:#ffffff;
+}
+
+.btn:hover{
+    background:$super-light;
+    color:$light-gray1;
+}
+
 header{
     .header-wrapper{
         padding: 16px;
@@ -614,26 +632,63 @@ header{
             .basket-order-wrapper{
                 display: flex;
                 justify-content: space-between;
+                gap:10px;
                 .basket-form-wrapper{
                     width: 75%;
+
+                    
+                    .radio{
+                        margin-bottom:10px;
+                    }
+                   
                     
                     .basket-form-title{
+                        display: flex;
                         justify-content: flex-start;
-                        font-size: 16px;
+                        align-items:center;
+                        font-size: 20px;
                         font-weight: 600;
+                        color:$dark-gray;
+                        margin-bottom: 20px;
+
+                        img{
+                            max-width: 30px;
+                            margin-right: 10px;
+                        }
                     }
 
                     .basket-form-payment-delivery{
                         display: flex;
                         justify-content: space-between;
+                        gap:10px;
+
+                        
                     }
 
                     .basket-form-payment-wrapper{
                         width: 50%;
+                        border:1px solid $light-gray;
+                        padding: 10px;
+                        margin-bottom: 10px;
                     }
 
                     .basket-form-delivery-wrapper{
                         width: 50%;
+                        border:1px solid $light-gray;
+                        padding: 10px;
+                        margin-bottom: 10px;
+                    }
+
+                    .basket-form-user-wrapper{
+                        border:1px solid $light-gray;
+                        padding: 10px;
+
+                        .form-group{
+                            margin-bottom: 20px;
+                        }
+                        .control-label{
+                            margin-bottom: 10px;
+                        }
                     }
                 }
                 .basket-total{

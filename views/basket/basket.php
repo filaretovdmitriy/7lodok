@@ -92,7 +92,7 @@ use app\assets\AppAsset;
                                 </div>
                             </div>
                         </div>
-                        <div class="basket-form-user">
+                        <div class="basket-form-user-wrapper">
                             <div class="basket-form-title">
                             <img src="<?= AppAsset::path('images/profile-icon.svg') ?>">
                                 <span>Покупатель</span>
@@ -104,7 +104,7 @@ use app\assets\AppAsset;
                                     'placeholder' => 'Обращение',
                                     'class' => 'form-control',
                                     'value' => !Yii::$app->user->isGuest ? Yii::$app->user->identity->name : ''
-                                ])->label(false)
+                                ])->label('Ваше имя');
                                 ?>
                             
                                 <?=
@@ -112,7 +112,7 @@ use app\assets\AppAsset;
                                     'placeholder' => 'Email',
                                     'class' => 'form-control',
                                     'value' => !Yii::$app->user->isGuest ? Yii::$app->user->identity->email : ''
-                                ])->label(false)
+                                ])->label('E-mail');
                                 ?>
                             
                                 <?=
@@ -120,14 +120,14 @@ use app\assets\AppAsset;
                                     'placeholder' => 'Телефон',
                                     'class' => 'form-control',
                                     'value' => !Yii::$app->user->isGuest ? Yii::$app->user->identity->phone : ''
-                                ])->label(false)
+                                ])->label('Телефон');
                                 ?>
                             
                                 <?=
                                 $form->field($order, 'comment')->textarea([
                                     'placeholder' => 'Комментарий',
                                     'class' => 'form-control'
-                                ])->label(false)
+                                ])->label('Комментарий к заказу');
                                 ?>
 
                                 <div id="basket-delivery-address" style="<?= $order->delivery->have_address != 1?'display: none':'' ?>">
@@ -135,19 +135,19 @@ use app\assets\AppAsset;
                                         'placeholder' => 'Город',
                                         'class' => 'form-control required',
                                         'value' => !Yii::$app->user->isGuest?Yii::$app->user->identity->city:''
-                                    ])->label(false) ?>
+                                    ])->label('Населенный пункт'); ?>
                             
                                     <?= $form->field($order, 'user_street')->textInput([
                                         'placeholder' => 'Улица/Шоссе',
                                         'class' => 'form-control',
                                         'value' => !Yii::$app->user->isGuest?Yii::$app->user->identity->street:''
-                                    ])->label(false) ?>
+                                    ])->label('Улица'); ?>
                                 
                                     <?= $form->field($order, 'user_home')->textInput([
                                         'placeholder' => 'Дом',
                                         'class' => 'form-control',
                                         'value' => !Yii::$app->user->isGuest?Yii::$app->user->identity->home:''
-                                    ])->label(false) ?>
+                                    ])->label('Дом, корпус, квартира'); ?>
                                 </div>
                                     
                             
