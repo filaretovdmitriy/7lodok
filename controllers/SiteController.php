@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Catalog;
+use app\models\Banner;
 use app\models\CatalogCategorie;
 use app\models\CatalogProp;
 use app\models\CatalogSku;
@@ -39,7 +40,7 @@ class SiteController extends \app\components\controller\Frontend
                             'status' => Catalog::STATUS_ACTIVE,
                         ])->all();
         
-        return $this->render('index',['catalog'=>$Catalog]);
+        return $this->render('index',['catalog'=>$Catalog, 'banner'=>$Banner]);
     }
 
     public function actionPage()

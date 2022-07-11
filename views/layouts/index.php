@@ -14,24 +14,7 @@ use app\assets\AppAsset;
                 <div class="slider-wrapper">
                     <?= app\widgets\coolbaby\SliderMain::widget(['sliderId' => 1]) ?>
                 </div>
-                <div class="features-wrapper">
-                        <div class="feature-item">
-                            <img src="<?= AppAsset::path('images/feature-icon.png') ?>">
-                            Подарочные сертификаты
-                        </div>
-                        <div class="feature-item">
-                            <img src="<?= AppAsset::path('images/feature-icon.png') ?>">
-                            Подарочные сертификаты
-                        </div>
-                        <div class="feature-item">
-                            <img src="<?= AppAsset::path('images/feature-icon.png') ?>">
-                            Подарочные сертификаты
-                        </div>
-                        <div class="feature-item">
-                            <img src="<?= AppAsset::path('images/feature-icon.png') ?>">
-                            Подарочные сертификаты
-                        </div>
-                    </div>
+                    <?= app\widgets\Features::widget() ?>
                     <?=$content?>
                 </main>
 
