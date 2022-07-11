@@ -1,35 +1,25 @@
+<?php
+/* @var $this app\components\View */
+
+use app\components\IcmsHelper;
+?>
 <?php if (!empty($items)) { ?>
-    <div id="myCarousel" class="carousel slide carousel-v1">
-        <div class="carousel-inner">
+    <div class="news-preview">
+        <div class="news-preview-title">
+            <p>Новости</p>
+            <a href="/news">Все новости</a>
+        </div>
             <?php
             $cnt = 0;
             foreach ($items as $item) {
                 ?>
-                <div class="item <?php
-                $cnt++;
-                if ($cnt == 1) {
-                    echo "active";
-                }
-                ?>">
-                    <a href="/news/<?= $item->alias ?>">
-                        <?php if (!empty($item->image)) { ?>
+                    <a href="/news/<?= $item->alias ?>" class="news-preview-item">
+                        <?/*php if (!empty($item->image)) { ?>
                             <img src="/upload/icms/images/content/<?= $item->image ?>" alt="<?= $item->name ?>">
-        <?php } ?>
-                        <div class="carousel-caption">
-                            <p><?= $item->name ?></p>
-                        </div>
+                        <?php } */?>
+                        <div class="news-date"><?= IcmsHelper::dateTimeFormat('d.m.Y', $item->g_date) ?></div>
+                        <div><?= $item->name ?></div>
                     </a>
-                </div>
     <?php } ?>
-        </div>
-
-        <div class="carousel-arrow">
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <i class="fa fa-angle-left"></i>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        </div>
     </div>
 <?php } ?>

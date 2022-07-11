@@ -305,8 +305,12 @@ header .header-wrapper .basket.empty .basket-empty-caption {
   margin-bottom: 32px;
 }
 
+.main-wrapper aside nav {
+  margin-bottom: 20px;
+}
+
 .main-wrapper aside nav .nav-item {
-  border-bottom: 1px solid #eaebec;
+  border: 1px solid #eaebec;
   position: relative;
 }
 
@@ -384,6 +388,55 @@ header .header-wrapper .basket.empty .basket-empty-caption {
 .main-wrapper aside nav .nav-item:hover .sub-menu a:hover {
   background: #555555;
   color: #eeeeee;
+}
+
+.main-wrapper aside .news-preview {
+  border: 1px solid #eaebec;
+  padding: 10px;
+}
+
+.main-wrapper aside .news-preview .news-preview-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #1d2029;
+}
+
+.main-wrapper aside .news-preview .news-preview-title p {
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+.main-wrapper aside .news-preview .news-preview-title a {
+  font-size: 11px;
+}
+
+.main-wrapper aside .news-preview .news-preview-item {
+  border-bottom: 1px solid #eaebec;
+  padding: 10px 0;
+  display: block;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.main-wrapper aside .news-preview .news-preview-item .news-date {
+  color: #555555;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.main-wrapper aside .news-preview .news-preview-item:last-child {
+  border: 0;
 }
 
 .main-wrapper aside .catalog-filter {
@@ -829,6 +882,18 @@ header .header-wrapper .basket.empty .basket-empty-caption {
 .main-wrapper main .basket-wraper .basket-items-wrapper .basket-catalog-item .basket-item-count .button-change-count {
   width: 25%;
   text-align: center;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #1d2029;
+  text-decoration: none;
 }
 
 .main-wrapper main .basket-wraper .basket-items-wrapper .basket-catalog-item .basket-item-count input[type="text"] {

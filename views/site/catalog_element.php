@@ -32,9 +32,9 @@ use yii\widgets\Breadcrumbs;
             </div>
             <div class="catalog-buy-buttons">
                 <div class="buy-count-buttons">
-                    <a class="button-change-count button-minus" href="#">-</a>
+                    <a class="button-change-count button-minus-item" href="#">-</a>
                     <input type='text' data-catalog-id="<?= $catalog->id ?>" class="form-control input-quantity quantity-field" value="1" id='quantity-field-<?= $catalog->id ?>' />
-                    <a class="button-change-count button-plus" href="#">+</a>
+                    <a class="button-change-count button-plus-item" href="#">+</a>
                 </div>
                 <div class="btn but-button basket-add-item"  data-id="<?= $catalog->id ?>"><span>В корзину</span></div>
             </div>

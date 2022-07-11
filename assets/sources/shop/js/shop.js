@@ -62,8 +62,65 @@ function checkSkuProps(showGrowl) {
     return flag;
 }
 
+function updateOrdercount(id, count)
+    {
+        if (isNaN(count) || count < 1) {
+            count = 1;
+        }
+
+        $.post('/basket/edit_good_count', {
+            orderGoodId: id,
+            newCount: count
+        }, function (data) {
+            if (data.success) {
+                $('#product-price-' + id).html(number_format(data.good_price, 2, '.', ' '));
+                $('#product-summ-' + id).html(number_format(data.good_summ, 2, '.', ' '));
+                $('#basket-total-price').html(number_format(data.total_price, 2, '.', ' '));
+                $('.mini-basket-count').html(data.total_count);
+                $('.mini-basket-price').html(number_format(data.total_price, 0, '.', ' '));
+                $('#basket-good-summ').html(number_format(data.total_price - data.delivery_price, 2, '.', ' '));
+                if(data.total_count==0) $('.mini-basket').addClass('empty');
+                $.growl({title: 'Корзина', message: 'Товар изменен'});
+            }
+        }, 'json');
+    }
+
 $(function($) {
     // *** BASKET ***
+
+    $(".button-plus").click(function( event ) {
+        event.preventDefault();
+        val = parseInt($(this).prev().val())+1;
+        $(this).prev().val(val);
+        
+        id = $(this).prev().data('id');
+        count = parseInt($(this).prev().val());
+        updateOrdercount(id, count);
+        
+    });
+
+    $(".button-minus").click(function( event ) {
+        event.preventDefault();
+        val = parseInt($(this).next().val())-1;
+        if(val<0) val=0;
+        $(this).next().val(val);
+        id = $(this).next().data('id');
+        count = parseInt($(this).next().val());
+        updateOrdercount(id, count);
+    });
+
+    $(".button-plus-item").click(function( event ) {
+        event.preventDefault();
+        val = parseInt($(this).prev().val())+1;
+        $(this).prev().val(val);
+    });
+
+    $(".button-minus-item").click(function( event ) {
+        event.preventDefault();
+        val = parseInt($(this).next().val())-1;
+        if(val<0) val=0;
+        $(this).next().val(val);
+    });
 
     $(document).on('click', '.show-filter-result', function () {
         $('#main-filter-form').submit();
@@ -162,30 +219,12 @@ $(function($) {
      * Обновление количества товара в корзине
      */
 
-  
+    
 
     $(document).on('change', '.update-order-count', function () {
         id = $(this).data('id');
         count = parseInt($(this).val());
-        if (isNaN(count) || count < 1) {
-            count = 1;
-        }
-
-        $.post('/ajax/basket/edit_good_count', {
-            orderGoodId: id,
-            newCount: count
-        }, function (data) {
-            if (data.success) {
-                $('#product-price-' + id).html(number_format(data.good_price, 2, '.', ' '));
-                $('#product-summ-' + id).html(number_format(data.good_summ, 2, '.', ' '));
-                $('#basket-total-price').html(number_format(data.total_price, 2, '.', ' '));
-                $('.mini-basket-count').html(data.total_count);
-                $('.mini-basket-price').html(number_format(data.total_price, 0, '.', ' '));
-                $('#basket-good-summ').html(number_format(data.total_price - data.delivery_price, 2, '.', ' '));
-                if(data.total_count==0) $('.mini-basket').addClass('empty');
-                $.growl({title: 'Корзина', message: 'Товар изменен'});
-            }
-        }, 'json');
+        updateOrdercount(id, count);
     });
     
     /**

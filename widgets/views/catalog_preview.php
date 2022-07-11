@@ -1,4 +1,5 @@
 <?php
+
 if (!empty($items)) {
     ?>
     <ul class="list-inline">

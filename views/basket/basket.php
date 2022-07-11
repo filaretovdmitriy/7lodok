@@ -40,9 +40,9 @@ use app\assets\AppAsset;
                             </div>
                             <div class="basket-item-price"  id="product-price-<?= $orderGoodId ?>"><?= number_format($good->price, 2, '.', ' ') ?></div>
                             <div class="basket-item-count">
-                                <div class="button-change-count">-</div>
+                                <a href="#" class="button-change-count button-minus">-</a>
                                 <input type='text' class="form-control input-quantity update-order-count" data-id="<?= $orderGoodId ?>" value="<?= $good->quant ?>" id='quantity-field-<?= $orderGoodId ?>'/>
-                                <div class="button-change-count">+</div>
+                                <a href="#" class="button-change-count button-plus">+</a>
                             </div>
                             <div id="product-summ-<?= $orderGoodId ?>" class="basket-item-sum"><?= number_format($good->summ, 2, '.', ' ') ?></div>
                             <div class="basket-item-delete"><button type="button" class="close basket-delete-good" data-id="<?= $orderGoodId ?>"><span class="sr-only">Удалить</span></button></div>

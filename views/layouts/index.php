@@ -7,6 +7,8 @@ use app\assets\AppAsset;
                     <nav class="catalog-left-menu">
                         <?= app\widgets\CatalogMenu::widget() ?>
                     </nav>
+                    
+                    <?= app\widgets\ContentPreview::widget(['content_categorie_id'=>1]) ?>
                 </aside>
                 <main>
                 <div class="slider-wrapper">

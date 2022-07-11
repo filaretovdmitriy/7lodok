@@ -240,9 +240,12 @@ header{
     grid-column-gap: 16px;
     aside{
         margin-bottom: 32px;
+        
         nav{
+            
+            margin-bottom: 20px;
             .nav-item{
-                border-bottom: 1px solid $border-gray;
+                border: 1px solid $border-gray;
                 position: relative;
                 >a{
                     height: 41px;
@@ -314,7 +317,46 @@ header{
                     }
                 }
             }
+
                 
+        }
+
+        .news-preview{
+            border:1px solid $border-gray;
+            padding: 10px;
+            .news-preview-title{
+                display: flex;
+                justify-content: space-between;
+                flex-direction:row;
+                align-items:center;
+                color:$dark-gray;
+
+                p{
+                    margin:10px 0;
+                    font-weight: 600;
+                }
+
+                a{
+                    font-size: 11px;
+                }
+            }
+            .news-preview-item{
+                border-bottom:1px solid $border-gray;
+                padding: 10px 0; 
+                display: block;
+                text-decoration: none;
+                font-size: 13px;
+                .news-date{
+                    color: $primary-color;
+                    margin-bottom: 5px;
+                    font-size: 12px;
+                    
+                }
+                &:last-child{
+                    border:0;
+                }
+                
+            }
         }
 
         .catalog-filter{
@@ -659,6 +701,12 @@ header{
                         .button-change-count{
                             width: 25%;
                             text-align: center;
+                            height: 40px;
+                            display: flex;
+                            justify-content: center;
+                            align-items:center;
+                            color:$dark-gray;
+                            text-decoration: none;
                         }
                         input[type="text"]{
                             width: 50%;
