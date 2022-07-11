@@ -50,17 +50,23 @@ if(!empty($catalogRelated)){
         <div class="catalog-items">
     <?
     foreach($catalogRelated as $item){
+        $link = \yii\helpers\Url::to([
+            'site/catalog_element',
+            'catalog_categorie_alias' => $item->categorie->alias,
+            'catalog_id' => $item->id,
+            'catalog_alias' => $item->alias,
+        ]);
         ?>
         <div class="catalog-item">
                 <div class="catalog-shadow-item">
-                    <a class="image-wrapper">
+                    <a  href="<?=$link?>" class="image-wrapper">
                     <?php if (!empty($item->image)) { ?>
                         <img class="img-responsive img-default" src="<?= $item->getResizePath('image', 170, 220) ?>" alt="<?= $item->name ?>">
                     <?php } ?>
                     </a>
-                    <a class="item-name"><?= $item->name?></a>
-                    <div class="item-price"><?= $item->price?></div>
-                    <div class="item-button add-to-cart">В корзину</div>
+                    <a  href="<?=$link?>" class="item-name"><?= $item->name?></a>
+                    <div class="item-price"><?= number_format($item->price, 2, '.', ' '); ?> руб</div>
+                    <a href="<?=$link?>" class="item-button add-to-cart">Купить</a>
                 </div>
             </div>
         <?

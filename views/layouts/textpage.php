@@ -2,10 +2,11 @@
 use yii\widgets\Breadcrumbs;
 ?>
 <?php $this->beginContent('@app/views/layouts/main.php'); ?>
-<aside>
+                <aside>
                     <nav class="catalog-left-menu">
                         <?= app\widgets\CatalogMenu::widget() ?>
                     </nav>
+                    <?= app\widgets\ContentPreview::widget(['content_categorie_id'=>1]) ?>
                 </aside>
                 <main>
                 <div class="inner-page-text">

@@ -1,10 +1,8 @@
 <?php
 /* @var $this app\components\View */
 ?>
-<div class="subtitle">
-    <div>
-        <span><?= $content->name ?></span>
-    </div>
-</div>
-<p><?= date('H:i d.m.Y',strtotime($content->g_date)) ?></p>
+<h1><?= $content->name ?></h1>
+<p class="full-news-date"><?= date('d.m.Y',strtotime($content->g_date)) ?></p>
 <?= $content->content ?>
+<p></p>
+<a href="/news">Вернуться к списку новостей</a>

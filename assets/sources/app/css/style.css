@@ -22,7 +22,7 @@ a:hover {
 
 p {
   margin-bottom: 16px;
-  line-height: 16px;
+  line-height: 20px;
 }
 
 h1 {
@@ -732,6 +732,54 @@ header .header-wrapper .basket.empty .basket-empty-caption {
   color: #555555;
 }
 
+.main-wrapper main .inner-page-text .full-news-date {
+  color: #1d2029;
+  font-size: 12px;
+}
+
+.main-wrapper main .inner-page-text .news-element {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 10px;
+  border-bottom: 1px solid #eaebec;
+  margin-bottom: 20px;
+}
+
+.main-wrapper main .inner-page-text .news-element .image-wrapper {
+  width: 20%;
+}
+
+.main-wrapper main .inner-page-text .news-element .image-wrapper img {
+  width: 100%;
+}
+
+.main-wrapper main .inner-page-text .news-element .news-content {
+  width: 80%;
+}
+
+.main-wrapper main .inner-page-text .news-element .news-content.fullwidth {
+  width: 100%;
+}
+
+.main-wrapper main .inner-page-text .news-element .news-content .news-date {
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: #1d2029;
+}
+
+.main-wrapper main .inner-page-text .news-element .news-content .news-title {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.main-wrapper main .inner-page-text .news-element .news-content .news-anons {
+  margin-bottom: 20px;
+}
+
 .main-wrapper main .catalog-element-item .catalog-element-info {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -750,6 +798,10 @@ header .header-wrapper .basket.empty .basket-empty-caption {
 .main-wrapper main .catalog-element-item .catalog-element-info .catalog-element-description {
   width: 50%;
   padding: 10px;
+}
+
+.main-wrapper main .catalog-element-item .catalog-element-info .catalog-element-description .catalog-description-content {
+  margin-bottom: 20px;
 }
 
 .main-wrapper main .catalog-element-item .catalog-element-info .catalog-element-description .catalog-element-price {

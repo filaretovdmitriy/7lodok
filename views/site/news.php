@@ -4,33 +4,35 @@
 use yii\widgets\LinkPager;
 use app\components\IcmsHelper;
 ?>
-<div class="col-sm-12">
+
     <?php if (!empty($contents)) { ?>
-        <div>
-            <?= $this->tree->getContent() ?>
-        </div>
+        <h1><?= $this->h1 ?></h1>
+        <?= $this->tree->getContent() ?>
+
     
         <?php foreach ($contents as $content) { ?>
-            <div class="row">
-                <div class="subtitle">
-                    <div>
-                        <span><a href="<?= yii\helpers\Url::to(['site/news_element', 'alias' => $content->alias]) ?>">​<?= $content->name ?></a></span>
-                    </div>
-                </div>
-                <div class="testimonials">
-                    <div class="inside">
-                        <p><?= $content->anons ?></p>
-                        <p><strong><?= IcmsHelper::dateTimeFormat('d.m.Y H:i', $content->g_date) ?> </strong></p>
-                    </div>
+            <div class="news-element">
+                
+                    <?php if (!empty($content->image)) { ?>
+                        <div class="image-wrapper">
+                            <img src="/upload/icms/images/content/<?= $content->image ?>" alt="<?= $content->name ?>">
+                        </div>
+                    <?php } ?>
+                
+                <div class="news-content <?php if (empty($content->image)) echo 'fullwidth'; ?>">
+                    <div class="news-date"><?= IcmsHelper::dateTimeFormat('d.m.Y', $content->g_date) ?> </div>
+                    <a href="<?= yii\helpers\Url::to(['site/news_element', 'alias' => $content->alias]) ?>" class="news-title">​<?= $content->name ?></a>
+                    <div class="news-anons"><?= $content->anons ?></div>
                 </div>
             </div>
+                        
+                    
         <?php } ?>
         <?= LinkPager::widget([
             'pagination' => $pages,
         ]);
     } else { ?>
-        <div class="alert alert-info fade in">
+        
             <strong>Список новостей пуст</strong>
-        </div>
+       
     <?php } ?>
-</div>

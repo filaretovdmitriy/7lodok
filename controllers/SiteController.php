@@ -198,10 +198,9 @@ class SiteController extends \app\components\controller\Frontend
         $price_min_get = Yii::$app->request->get('price_min', $minPrice);
         $price_max_get = Yii::$app->request->get('max_price', $maxPrice);
         
-       
-
-
-        if (!empty($price_max_get)) {
+        
+        
+        if (!empty($price_max_get) && !empty($get_prop)) {
             foreach (array_keys($get_prop) as $prop_key) {
                 $propInfo = Prop::findOne($prop_key);
                 if ($propInfo->is_sku) {

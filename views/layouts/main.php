@@ -57,8 +57,18 @@ AppAsset::register($this);
                     <div class="phones">
                         <div class="icon-wrapper"><img src="<?= AppAsset::path('images/phones-icon.svg') ?>"></div>
                         <div class="phones-list">
-                            <a href="tel:+79999999999">+7 (929) 99-09-09</a>
-                            <a href="tel:+79999999999">+7 (929) 99-09-09</a>
+                            <?
+                                if(is_array(Parameter::getValue(3))) {
+                                    foreach(Parameter::getValue(3) as $phone)
+                                    {
+                                        ?>
+                                            <a href="tel:+<?=preg_replace('/[^0-9]/', '', $phone)?>"><?=$phone?></a>
+                                        <?
+                                    }
+                                }
+                            ?>
+                            
+                            
                         </div>
                     </div>
                     <?= app\widgets\BasketMini::widget() ?>
@@ -87,8 +97,16 @@ AppAsset::register($this);
                     <div class="phones">
                         <img src="<?= AppAsset::path('images/phones-icon.svg') ?>">
                         <div class="phones-list">
-                            <a href="tel:+79999999999">+7 (929) 99-09-09</a>
-                            <a href="tel:+79999999999">+7 (929) 99-09-09</a>
+                            <?
+                                if(is_array(Parameter::getValue(3))) {
+                                    foreach(Parameter::getValue(3) as $phone)
+                                    {
+                                        ?>
+                                            <a href="tel:+<?=preg_replace('/[^0-9]/', '', $phone)?>"><?=$phone?></a>
+                                        <?
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>

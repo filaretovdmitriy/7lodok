@@ -33,7 +33,7 @@ a:hover{
 
 p{
     margin-bottom: 16px;
-    line-height: 16px;
+    line-height: 20px;
 }
 
 h1{
@@ -587,6 +587,45 @@ header{
                 }
                 
             }
+
+            .full-news-date{
+                color:$dark-gray;
+                font-size: 12px;
+            }
+
+            .news-element{
+                display: flex;
+                justify-content: flex-start;
+                gap:10px;
+                border-bottom:1px solid $border-gray;
+                margin-bottom: 20px;
+                .image-wrapper{
+                    width: 20%;
+                    img{
+                        width: 100%;
+                    }
+                }
+                .news-content{
+                    width: 80%;
+                    &.fullwidth{
+                        width: 100%;
+                    }
+                    
+                    .news-date{
+                        font-size: 12px;
+                        margin-bottom: 10px;
+                        color:$dark-gray;
+                    }
+                    .news-title{
+                        margin-bottom: 10px;
+                        display: block;
+                    }
+
+                    .news-anons{
+                        margin-bottom: 20px;
+                    }
+                }
+            }
         }
 
         .catalog-element-item{
@@ -602,7 +641,7 @@ header{
                     width: 50%;
                     padding: 10px;
                     .catalog-description-content{
-
+                        margin-bottom: 20px;
                     }
                     .catalog-element-price{
                         font-size: 20px;
