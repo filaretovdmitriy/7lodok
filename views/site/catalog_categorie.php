@@ -7,7 +7,7 @@ use yii\widgets\Breadcrumbs;
 
                 <aside>
                 
-                <form method="get">
+                <form method="get" id="main-filter-form">
                     <div class="catalog-filter">
                         <?foreach ($catalog_categorie->catalogCategorieProps as $elem) {?>
                             <?if ($elem->props->is_filter == 1) { ?>
@@ -41,20 +41,65 @@ use yii\widgets\Breadcrumbs;
                             <?}?>
                         <?}?>
                         <div class="catalog-filter-panel">
+                        
                             <div class="catalog-filter-header"><a href="#">Цена</a></div>
                             <div class="catalog-filter-price-range">
-                                <input type="text" name="min_price" id="input-number-min">
+                                <input type="text" name="min_price" id="input-number-min" value="<?=$price_min_get?>">
                                 <span class="divider">-</span>
-                                <input type="text" name="max_price" id="input-number-max">
+                                <input type="text" name="max_price" id="input-number-max" value="<?=$price_max_get?>">
                             </div>
                             <div class="price-filter-slider">
                                 <div id="input-range"></div>
                             </div>
+
+                            <?php $this->registerJs("
+                                    jQuery(document).ready(function(){
+                                        var html5Slider = document.getElementById('input-range');
+                                        var inputNumbermin = document.getElementById('input-number-min');
+                                        var inputNumbermax = document.getElementById('input-number-max');
+
+                                        noUiSlider.create(html5Slider, {
+                                            start: [$price_min_get, $price_max_get],
+                                            connect: true,
+                                            range: {
+                                                'min': $minPrice,
+                                                'max': $maxPrice
+                                            }
+                                        });
+
+
+                                       
+                                        html5Slider.noUiSlider.on('update', function (values, handle) {
+                                            var value = values[handle];
+                                            if (handle) {
+                                                inputNumbermax.value = value;
+                                            } else {
+                                                inputNumbermin.value = value;
+                                            }
+                                        });
+
+
+
+                                        inputNumbermin.addEventListener('change', function () {
+                                            html5Slider.noUiSlider.set([this.value]);
+                                        });
+
+
+                                        inputNumbermax.addEventListener('change', function () {
+                                            html5Slider.noUiSlider.set([null, this.value]);
+                                        });
+                                    })
+                                ");
+                            ?>
                         </div>
                        
                         <div class="catalog-filter-buttons">
                             <input type="button" class="show-filter-result btn" value="Показать">
-                            <input type="button" class="reset-filter-result reset-btn" value="Сбросить">
+                            <a href="<?= \yii\helpers\Url::to([
+                                'site/catalog_categorie',
+                                'catalog_categorie_alias' => $catalog_categorie->alias,
+                                
+                            ]) ?>" class="reset-filter-result reset-btn" value="Сбросить">Сбросить</a>
                         </div>
                     </div>
                 </form>
@@ -80,9 +125,9 @@ use yii\widgets\Breadcrumbs;
                         <div class="catalog-list">
 
                             <div class="catalog-sort-panel">
-                                <a class="catalog-sort-item asc active">По цене</a>
-                                <a class="catalog-sort-item">По названию</a>
-                                <a class="catalog-sort-item">По скидке</a>
+                                <?= $sort->link('name', ['class' => 'catalog-sort-item']) ?>
+                                <?= $sort->link('price', ['class' => 'catalog-sort-item']) ?>
+                                <?= $sort->link('is_popular', ['class' => 'catalog-sort-item']) ?>
                             </div>
 
                             <?php if (!empty($catalog)) { ?>

@@ -6,7 +6,25 @@ $(document).ready(function () {
         dots: true,
         fade: true,
     });
+
+    $(".button-plus").click(function( event ) {
+        event.preventDefault();
+        val = parseInt($(this).prev().val())+1;
+        $(this).prev().val(val);
+        
+    });
+
+    $(".button-minus").click(function( event ) {
+        event.preventDefault();
+        val = parseInt($(this).next().val())-1;
+        if(val<0) val=0;
+        $(this).next().val(val);
+    });
+
+
 });
+
+
 /*
 var html5Slider = document.getElementById('input-range');
 var inputNumbermin = document.getElementById('input-number-min');

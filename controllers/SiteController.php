@@ -188,13 +188,20 @@ class SiteController extends \app\components\controller\Frontend
             'status' => Catalog::STATUS_ACTIVE,
         ]);
 
+        
+
+       
+
         $countCatalog = clone $catalog;
         $minPrice = $countCatalog->min('price');
         $maxPrice = $countCatalog->max('price');
         $price_min_get = Yii::$app->request->get('price_min', $minPrice);
-        $price_max_get = Yii::$app->request->get('price_max', $maxPrice);
+        $price_max_get = Yii::$app->request->get('max_price', $maxPrice);
+        
+       
 
-        if (!empty($get_prop)) {
+
+        if (!empty($price_max_get)) {
             foreach (array_keys($get_prop) as $prop_key) {
                 $propInfo = Prop::findOne($prop_key);
                 if ($propInfo->is_sku) {
@@ -214,6 +221,7 @@ class SiteController extends \app\components\controller\Frontend
                         $catalog->andFilterWhere(['id' => $goodIds]);
                     }
                 } else {
+                    
                     if (($propInfo['prop_type_list_id'] == 1) || ($propInfo['prop_type_list_id'] == 3)) {
                         $elems = ArrayHelper::map(CatalogProp::find()->andWhere('props_id=:props_id and value=:value', ['props_id' => $prop_key, 'value' => $get_prop[$prop_key]])->all(), 'catalog_id', 'catalog_id');
                         $catalog->andFilterWhere(['in', 'id', $elems]);
@@ -235,15 +243,21 @@ class SiteController extends \app\components\controller\Frontend
             );
         }
 
+        
+
         $sort = new \yii\data\Sort([
             'attributes' => [
                 'name' => [
                     'default' => SORT_ASC,
-                    'label' => 'Имени',
+                    'label' => 'По названию',
                 ],
                 'price' => [
                     'default' => SORT_ASC,
-                    'label' => 'Стоимости',
+                    'label' => 'По цене',
+                ],
+                'is_popular'=>[
+                    'default' => SORT_ASC,
+                    'label' => 'По популярности',
                 ],
                 'sort'
             ],
@@ -259,7 +273,7 @@ class SiteController extends \app\components\controller\Frontend
                 ->limit($pages->limit)
                 ->orderBy($sort->orders)
                 ->all();
-
+               
 
         $this->view->h1 = $catalog_categorie->name;
         $this->view->title = $catalog_categorie->title_seo ?: $catalog_categorie->name;
@@ -307,6 +321,12 @@ class SiteController extends \app\components\controller\Frontend
         if (empty($catalog)) {
             throw new \yii\web\NotFoundHttpException();
         }
+
+        $catalogRelated = Catalog::find()->andWhere([
+            'catalog_categorie_id' => $catalog->catalog_categorie_id,
+            'status' => Catalog::STATUS_ACTIVE,
+        ])->andWhere(['<>','id', $catalog->id])->all();
+        
         $this->layout = "textpage";
         $this->view->title = $catalog->name;
         if (!empty($catalog->title_seo)) {
@@ -338,7 +358,8 @@ class SiteController extends \app\components\controller\Frontend
                     'propsListId' => $propsListId,
                     'catalogSku' => $catalogSku,
                     'skuGrid' => $skuGrid,
-                    'catalogHasSku' => $catalogHasSku
+                    'catalogHasSku' => $catalogHasSku,
+                    'catalogRelated' => $catalogRelated,
         ]);
     }
 

@@ -61,11 +61,8 @@ AppAsset::register($this);
                             <a href="tel:+79999999999">+7 (929) 99-09-09</a>
                         </div>
                     </div>
-                    <div class="basket empty">
-                        <div class="icon-wrapper"><img src="<?= AppAsset::path('images/shopping-cart.svg') ?>"><div class="basket-count"></div></div>
-                        <div class="basket-empty-caption">Корзина пуста</div>
-                        <div class="baket-caption"><span>Корзина</span> <span class="basket-price">1950</span> р</div>
-                    </div>
+                    <?= app\widgets\BasketMini::widget() ?>
+                    
                 </div>
             </header>
 

@@ -159,13 +159,47 @@ header{
                 justify-content: center;
                 align-items: center;
                 margin-right: 16px;
+                position: relative;
                 img{
                     max-width: 20px;
                 }
+                .basket-count{
+                    position: absolute;
+                    right: -10px;
+                    top:-10px;
+                    width: 20px;
+                    height: 20px;
+                    border-radius:50%;
+                    background:$super-light;
+                    color:#ffffff;
+                    display: flex;
+                    justify-content: center;
+                    align-items:center;
+                    font-size: 12px;
+                }
             }
-            .baket-caption{
+            .basket-empty-caption{
                 display: none;
             }
+
+            .baket-caption{
+                display: flex;
+                flex-direction: column;
+                .baket-caption-name{
+                    color:$dark-gray;
+                }
+            }
+
+            &.empty{
+                .baket-caption{
+                    display: none;
+                }
+                .basket-empty-caption{
+                    display: block;
+                }
+            }
+
+            
         }
     }
 
@@ -285,6 +319,7 @@ header{
 
         .catalog-filter{
             background:$light-gray1;
+            margin-bottom: 20px;
             .catalog-filter-panel{
                 padding: 0 16px;
                 border-bottom:1px solid $border-gray;
@@ -304,8 +339,8 @@ header{
                         display: flex;
                         justify-content: flex-start;
                         align-items:center;
-                        input[type="checkbox"]{
-                            margin-right: 8px;
+                        input[type="checkbox"], input[type="radio"]{
+                            margin:0 8px 0 0;
                         }
                     }
                 }
@@ -353,7 +388,8 @@ header{
                 display: flex;
                 justify-content: center;
                 padding:16px 0;
-                input[type="button"]{
+                gap:10px;
+                input[type="button"], a{
                     width: 40%;
                     border-radius: 4px;
                     height: 30px;
@@ -430,8 +466,9 @@ header{
                         position: absolute;
                     }
                 }
-                a.active{
+                a.active, a.asc, a.desc{
                     color: $light-color;
+                    font-weight: 600;
                 }
             }
             
@@ -548,6 +585,12 @@ header{
                             .button-change-count{
                                 width: 25%;
                                 text-align: center;
+                                height: 41px;
+                                display: flex;
+                                justify-content: center;
+                                align-items:center;
+                                text-decoration: none;
+                                color:#000;
                             }
                             input[type="text"]{
                                 width: 50%;

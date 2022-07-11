@@ -64,6 +64,10 @@ function checkSkuProps(showGrowl) {
 
 $(function($) {
     // *** BASKET ***
+
+    $(document).on('click', '.show-filter-result', function () {
+        $('#main-filter-form').submit();
+    });
     
     /**
     * Удаление товара из заказа
@@ -148,6 +152,7 @@ $(function($) {
             if (data.success) {
                 $('.mini-basket-count').html(data.total_count);
                 $('.mini-basket-price').html(number_format(data.total_price, 0, '.', ' '));
+                $('.mini-basket').removeClass('empty');
                 $.growl({title: 'Корзина', message: 'Товар добавлен'});
             }
         }, 'json');
@@ -156,6 +161,9 @@ $(function($) {
     /**
      * Обновление количества товара в корзине
      */
+
+  
+
     $(document).on('change', '.update-order-count', function () {
         id = $(this).data('id');
         count = parseInt($(this).val());
@@ -174,6 +182,7 @@ $(function($) {
                 $('.mini-basket-count').html(data.total_count);
                 $('.mini-basket-price').html(number_format(data.total_price, 0, '.', ' '));
                 $('#basket-good-summ').html(number_format(data.total_price - data.delivery_price, 2, '.', ' '));
+                if(data.total_count==0) $('.mini-basket').addClass('empty');
                 $.growl({title: 'Корзина', message: 'Товар изменен'});
             }
         }, 'json');

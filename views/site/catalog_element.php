@@ -32,9 +32,9 @@ use yii\widgets\Breadcrumbs;
             </div>
             <div class="catalog-buy-buttons">
                 <div class="buy-count-buttons">
-                    <div class="button-change-count">-</div>
+                    <a class="button-change-count button-minus" href="#">-</a>
                     <input type='text' data-catalog-id="<?= $catalog->id ?>" class="form-control input-quantity quantity-field" value="1" id='quantity-field-<?= $catalog->id ?>' />
-                    <div class="button-change-count">+</div>
+                    <a class="button-change-count button-plus" href="#">+</a>
                 </div>
                 <div class="btn but-button basket-add-item"  data-id="<?= $catalog->id ?>"><span>В корзину</span></div>
             </div>
@@ -42,48 +42,33 @@ use yii\widgets\Breadcrumbs;
     </div>
 </div>
 
-                    <div class="catalog-list">
-                        <h2>Смотрите также</h2>
-                        <div class="catalog-items">
-                            <div class="catalog-item">
-                                <div class="catalog-shadow-item">
-                                    <a class="image-wrapper">
-                                        <img src="images/catalog-element.jpg">
-                                    </a>
-                                    <a class="item-name">Название товара</a>
-                                    <div class="item-price">12 000 руб</div>
-                                    <div class="item-button add-to-cart">В корзину</div>
-                                </div>
-                            </div>
-                            <div class="catalog-item">
-                                <div class="catalog-shadow-item">
-                                    <a class="image-wrapper">
-                                        <img src="images/catalog-element.jpg">
-                                    </a>
-                                    <a class="item-name">Название товара</a>
-                                    <div class="item-price">12 000 руб</div>
-                                    <div class="item-button add-to-cart">В корзину</div>
-                                </div>
-                            </div><div class="catalog-item">
-                                <div class="catalog-shadow-item">
-                                    <a class="image-wrapper">
-                                        <img src="images/catalog-element.jpg">
-                                    </a>
-                                    <a class="item-name">Название товара</a>
-                                    <div class="item-price">12 000 руб</div>
-                                    <div class="item-button add-to-cart">В корзину</div>
-                                </div>
-                            </div><div class="catalog-item">
-                                <div class="catalog-shadow-item">
-                                    <a class="image-wrapper">
-                                        <img src="images/catalog-element.jpg">
-                                    </a>
-                                    <a class="item-name">Название товара товара товара товара</a>
-                                    <div class="item-price">12 000 руб</div>
-                                    <div class="item-button add-to-cart">В корзину</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+<?php
+if(!empty($catalogRelated)){
+    ?>
+    <div class="catalog-list">
+        <h2>Смотрите также</h2>
+        <div class="catalog-items">
+    <?
+    foreach($catalogRelated as $item){
+        ?>
+        <div class="catalog-item">
+                <div class="catalog-shadow-item">
+                    <a class="image-wrapper">
+                    <?php if (!empty($item->image)) { ?>
+                        <img class="img-responsive img-default" src="<?= $item->getResizePath('image', 170, 220) ?>" alt="<?= $item->name ?>">
+                    <?php } ?>
+                    </a>
+                    <a class="item-name"><?= $item->name?></a>
+                    <div class="item-price"><?= $item->price?></div>
+                    <div class="item-button add-to-cart">В корзину</div>
+                </div>
+            </div>
+        <?
+    }?>
+        </div>
+    </div>
+<?    
+}
+?>
+                   
                     
