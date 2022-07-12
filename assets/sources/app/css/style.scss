@@ -149,6 +149,7 @@ header{
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            text-decoration: none;
             .icon-wrapper{
                 width: 41px;
                 height: 41px;
@@ -477,6 +478,29 @@ header{
 
         .main-text-wrapper{
             margin-bottom: 16px;
+        }
+
+        .catalog-categories-main{
+            display: flex;
+            justify-content: flex-start;
+            gap:10px;
+            flex-wrap: wrap;
+            .catalog-categorie-element{
+                width: 25%;
+                padding: 10px;
+                .image-wrapper{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 200px;
+                    img{
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+                
+            }
         }
 
         .catalog-list{

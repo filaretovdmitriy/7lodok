@@ -193,7 +193,7 @@ use app\assets\AppAsset;
     <?php } ?>
 </div>
 
-<?php /* if (Yii::$app->session->getFlash('ORDER_SEND', false) === false) { ?>
+<?php  if (Yii::$app->session->getFlash('ORDER_SEND', false) === false) { ?>
     <div style="<?= count($goods) > 0 ? 'display: none' : '' ?>" id="basket-empty-message">
         <div class="divider-lg"></div>
         <div class="divider-lg"></div>
@@ -204,11 +204,11 @@ use app\assets\AppAsset;
             <h1>Ваша корзина пуста! <span class="sub-header">Добавьте один или несколько товаров в корзину из <a href="<?= \yii\helpers\Url::to(['site/catalog']) ?>">каталога</span></h1>
             <div class="divider-lg">
             </div>
-            <a href="/" class="btn btn-cool btn-lg">Вернуться на главную страницу </a>
+            <a href="/">Вернуться на главную страницу </a>
         </div>
     </div>
 <?php } else { ?>
     <div class="alert alert-success fade in">
         <strong>Заказ оформлен!</strong> Обо всех изменениях статусов заказа Вам придёт уведомление на почтовый ящик, указанный при оформлении заказа
     </div>
-<?php } */?>
+<?php } ?>

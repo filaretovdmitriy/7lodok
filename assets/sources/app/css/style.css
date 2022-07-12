@@ -177,6 +177,7 @@ header .header-wrapper .basket {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-decoration: none;
 }
 
 header .header-wrapper .basket .icon-wrapper {
@@ -603,6 +604,42 @@ header .header-wrapper .basket.empty .basket-empty-caption {
 
 .main-wrapper main .main-text-wrapper {
   margin-bottom: 16px;
+}
+
+.main-wrapper main .catalog-categories-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 10px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.main-wrapper main .catalog-categories-main .catalog-categorie-element {
+  width: 25%;
+  padding: 10px;
+}
+
+.main-wrapper main .catalog-categories-main .catalog-categorie-element .image-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 200px;
+}
+
+.main-wrapper main .catalog-categories-main .catalog-categorie-element .image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .main-wrapper main .catalog-list .catalog-sort-panel {
