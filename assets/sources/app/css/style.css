@@ -1071,6 +1071,14 @@ footer .footer-wrapper {
   height: 60px;
 }
 
+footer .footer-wrapper .logo-wrapper {
+  max-width: 120px;
+}
+
+footer .footer-wrapper .logo-wrapper img {
+  max-width: 100%;
+}
+
 footer .footer-wrapper nav {
   width: 45%;
   display: -webkit-box;

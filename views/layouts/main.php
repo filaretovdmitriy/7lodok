@@ -90,7 +90,7 @@ AppAsset::register($this);
             </section>
             <footer>
                 <div class="footer-wrapper page-wrapper">
-                    <div class="logo-wrapper"></div>
+                    <div class="logo-wrapper"><a href="/"><img src="<?= AppAsset::path('images/logo.svg') ?>" name="" /></a></div>
                     <nav class="footer-menu">
                     <?= app\widgets\FooterMenu::widget() ?>
                     </nav>

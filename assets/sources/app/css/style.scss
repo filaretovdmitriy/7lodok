@@ -846,6 +846,12 @@ footer{
         justify-content: space-between;
         align-items: center;
         height: 60px;
+        .logo-wrapper{
+            max-width: 120px;
+            img{
+                max-width: 100%;
+            }
+        }
         nav{
 
             width: 45%;

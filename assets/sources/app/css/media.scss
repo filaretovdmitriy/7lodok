@@ -35,6 +35,42 @@
                     display: none;
                 }
             }
+
+        }
+
+        .menu-wrapper, .catalog-left-menu, .slider-wrapper{
+            display: none;
+        }
+
+        .main-wrapper {
+            main{
+                padding-right: 10px;
+                padding-left:10px;
+                .features-wrapper{
+                    display: none;
+                }
+            }
+            aside{
+                margin-bottom: 0;
+            }
+        }
+
+        footer{
+            padding-left: 10px;
+            padding-right: 10px;
+            .footer-menu{
+                display: none;
+            }
+            .logo-wrapper{
+                width: 30%;
+            }
+            .phones{
+                width: 70%;
+                justify-content: flex-end;
+                img{
+                    display: none;
+                }
+            }
         }
     }
 
