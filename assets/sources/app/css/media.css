@@ -2,4 +2,33 @@
   .site-wrapper {
     width: 100%;
   }
+  .site-wrapper .page-wrapper {
+    width: 100%;
+  }
+  .site-wrapper .main-wrapper {
+    width: 100%;
+    display: block;
+  }
+  .site-wrapper header .logo-wrapper {
+    width: 30%;
+  }
+  .site-wrapper header .search {
+    display: none;
+  }
+  .site-wrapper header .phones {
+    min-width: auto;
+  }
+  .site-wrapper header .phones .icon-wrapper {
+    display: none;
+  }
+  .site-wrapper header .phones .phones-list a {
+    font-size: 12px;
+    padding: 3px;
+  }
+  .site-wrapper header .basket .icon-wrapper {
+    margin-right: 0;
+  }
+  .site-wrapper header .basket .baket-caption, .site-wrapper header .basket .baket-empty-caption {
+    display: none;
+  }
 }

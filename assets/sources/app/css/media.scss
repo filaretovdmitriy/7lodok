@@ -1,7 +1,43 @@
 @media (max-width: 1000px) {
     .site-wrapper{
         width: 100%;
+        .page-wrapper{
+            width: 100%;
+        }
+        .main-wrapper{
+            width: 100%;
+            display: block;
+        }
+        header{
+            .logo-wrapper{
+                width: 30%;
+            }
+            .search{
+                display: none;
+            }
+            .phones{
+                min-width: auto;
+                .icon-wrapper{
+                    display: none;
+                }
+                .phones-list{
+                    a{
+                        font-size: 12px;
+                        padding: 3px;
+                    }
+                }
+            }
+            .basket{
+                .icon-wrapper{
+                    margin-right: 0;
+                }
+                .baket-caption, .baket-empty-caption{
+                    display: none;
+                }
+            }
+        }
     }
 
+    
     
 }
