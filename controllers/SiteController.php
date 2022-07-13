@@ -40,7 +40,7 @@ class SiteController extends \app\components\controller\Frontend
                             'status' => Catalog::STATUS_ACTIVE,
                         ])->all();
         
-        return $this->render('index',['catalog'=>$Catalog, 'banner'=>$Banner]);
+        return $this->render('index',['catalog'=>$Catalog]);
     }
 
     public function actionPage()
