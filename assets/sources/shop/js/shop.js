@@ -129,10 +129,10 @@ $(function($) {
     /**
     * Удаление товара из заказа
     */
-   $('#basket-table').on('click', '.basket-delete-good', function() {
+   $('.basket-wraper').on('click', '.basket-delete-good', function(event) {
        id = $(this).data('id');
 
-       $.post('/ajax/basket/delete_good', {orderGoodId: id}, function(data) {
+       $.post('/basket/delete_good', {orderGoodId: id}, function(data) {
            if (data.success) {
                $('#order-good-' + id).remove();
                $('#basket-total-price').html(number_format(data.total_price, 2, '.', ' '));
@@ -149,6 +149,8 @@ $(function($) {
                data.delete_good = id;
            }
        }, 'json');
+       event.preventDefault();
+       
    });
    
    /**
@@ -234,7 +236,7 @@ $(function($) {
         daliveryId = $(this).val();
         have_address = $(this).data('have_address');
         
-        $.post('/ajax/basket/change_delivery', {deliveryId: daliveryId}, function(data) {
+        $.post('/basket/change_delivery', {deliveryId: daliveryId}, function(data) {
             if (data.success) {
                 $('#basket-total-price').html(number_format(data.total_price, 2, '.', ' '));
                 if (data.delivery_price > 0) {
@@ -264,7 +266,7 @@ $(function($) {
     $('#basket-pay-selector').on('change', 'input[type="radio"]', function() {
         payId = $(this).val();
         
-        $.post('/ajax/basket/change_pay', {payId: payId}, function(data) {
+        $.post('/basket/change_pay', {payId: payId}, function(data) {
             if (data.success) {
                 $.growl({title: 'Корзина', message: 'Способ оплаты сохранен'});
             }

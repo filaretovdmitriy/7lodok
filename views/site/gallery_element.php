@@ -1,33 +1,27 @@
 <?php
 /* @var $this app\components\View */
 ?>
-<div class="container">
-    <div class="subtitle">
-        <div>
-            <span><?= $this->h1 ?></span>
-        </div>
-    </div>
-</div>
-<div class="images-gallery three-columns">
-    <div class="images-nospace">
+<h1><?= $this->h1 ?></h1>
+<div class="images-gallery">
+    
         <?php if (!empty($gallery)) {
             foreach ($gallery as $img) { ?>
-                <div class="image-thumbnail">
-                    <a href="<?= $img->getPath('image') ?>" class="gallery-group">
+               
+                    <a href="<?= $img->getPath('image') ?>" class="image-gallery-element" data-fancybox="fancy">
                         <?php if (!empty($img->image)) { ?>
-                            <img src="<?= $img->getPath('image') ?>" alt="<?= $img->name ?>">
+                            <img src="<?= $img->getResizePath('image', 200, 200, 1) ?>" alt="<?= $img->name ?>">
                         <?php } else { ?>
-                            <img src="<?= ShopCoolBabyAsset::path('images/gallery/gallery-thumbnail-three-01.jpg') ?>">
+                            
                         <?php } ?>
-                        <div class="hover"></div>
+                       
                     </a>
-                </div>
+                
             <?php
             }
         } else { ?>
-            <div class="alert alert-info fade in">
+            <div>
                 <strong>Список пуст</strong>
             </div>
         <?php } ?>
-    </div>
+    
 </div>

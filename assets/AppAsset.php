@@ -30,7 +30,7 @@ class AppAsset extends AssetBundle
         'app\assets\ShopAsset',
         'app\assets\GrowlAsset',
         'app\assets\ToTopAsset',
-        'app\assets\FancyBoxAsset',
+        'app\assets\FancyBox3Asset',
     ];
 
     public static function path($relativePath = '')

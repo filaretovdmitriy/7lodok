@@ -45,7 +45,7 @@ use app\assets\AppAsset;
                                 <a href="#" class="button-change-count button-plus">+</a>
                             </div>
                             <div id="product-summ-<?= $orderGoodId ?>" class="basket-item-sum"><?= number_format($good->summ, 2, '.', ' ') ?></div>
-                            <div class="basket-item-delete"><button type="button" class="close basket-delete-good" data-id="<?= $orderGoodId ?>"><span class="sr-only">Удалить</span></button></div>
+                            <a href="#" class="basket-delete-good" data-id="<?= $orderGoodId ?>"></a>
                         </div>
                     <?}?>
                 </div>
@@ -59,7 +59,7 @@ use app\assets\AppAsset;
                                     <span>Способы доставки</span>
                                     
                                 </div>
-                                <div class="basket-form-payment">
+                                <div class="basket-form-delivery" id="basket-delivery-selector">
                                         <?=$form->field($order, 'catalog_delivery_id')->widget(RadioList::class, [
                                             'items' => IcmsHelper::map($deliverys, 'id', 'name'),
                                             'itemsOptions' => IcmsHelper::modelAttributesToData($deliverys, 'id', ['have_address']),
@@ -77,7 +77,7 @@ use app\assets\AppAsset;
                                     <img src="<?= AppAsset::path('images/payment-icon.svg') ?>">
                                     <span>Способы оплаты</span>
                                 </div>
-                                <div class="basket-form-delivery">
+                                <div class="basket-form-payment" id="basket-pay-selector">
                                     <?=
                                     $form->field($order, 'catalog_pay_id')->widget(RadioList::class, [
                                         'items' => IcmsHelper::map($pays, 'id', 'name'),

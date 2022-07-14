@@ -1,12 +1,39 @@
+$light-color:#6c8cc7;
+
 @media (max-width: 1000px) {
     .site-wrapper{
         width: 100%;
+        header{
+            position: fixed;
+            background: #fff;
+            z-index: 10;
+        }
         .page-wrapper{
             width: 100%;
+            
+        }
+        .menu-wrapper{
+            z-index: 10;
+            top:73px;
+            display: none;
+            position: fixed;
+            height: calc(100vh - 73px);
+            width: 100vw; 
+            background: $light-color;
+            &.active{
+                display: block;
+            }
+            nav{
+                flex-direction: column;
+            }
+            .catalog-toggle-link{
+                display: none;
+            }
         }
         .main-wrapper{
             width: 100%;
             display: block;
+            padding-top: 73px;
         }
         header{
             .logo-wrapper{
@@ -17,6 +44,7 @@
             }
             .phones{
                 min-width: auto;
+                display: none;
                 .icon-wrapper{
                     display: none;
                 }
@@ -31,14 +59,51 @@
                 .icon-wrapper{
                     margin-right: 0;
                 }
-                .baket-caption, .baket-empty-caption{
-                    display: none;
+                .baket-caption, .basket-empty-caption{
+                    display: none !important;
                 }
             }
 
+            .burger-btn {
+                display:flex;
+                cursor:pointer;
+                width:20px;
+                height:14px;
+                justify-content: space-between;
+                flex-direction: column;
+                position: relative;
+                span {
+                    height:2px;
+                    width:100%;
+                    background-color:#0a0a0a;
+                    transition:0.2s;
+                }
+                
+                &.active span{
+                    position: absolute;
+                    top:0;
+                    left:0;
+                    right:0;
+                    bottom:0;
+                    margin:auto;
+                }
+
+                &.active span:nth-child(2) {
+                    opacity:0;
+                }
+
+                &.active span:first-child {
+                    transform:rotate(45deg);
+                }
+
+                &.active span:last-child {
+                    transform:rotate(-45deg);
+                }
+            }
+        
         }
 
-        .menu-wrapper, .catalog-left-menu, .slider-wrapper{
+        .catalog-left-menu, .slider-wrapper{
             display: none;
         }
 
@@ -46,12 +111,82 @@
             main{
                 padding-right: 10px;
                 padding-left:10px;
+                .main-text-wrapper{
+                    .catalog-categories-main{
+                        gap:0;
+                        .catalog-categorie-element{
+                            width: 50%;
+                        }
+                    }
+                }
+
                 .features-wrapper{
                     display: none;
                 }
+                .images-gallery{
+                    display: block;
+                    .image-gallery-element{
+                        width: 100%;
+                        padding:10px;
+                        display: block;
+                        img{
+                            width: 100%;
+                        }
+                    }
+                }
+                .catalog-list{
+                    .catalog-items{
+                        grid-template-columns: repeat(2, 2fr);
+                    }
+                }
+                .catalog-element-item{
+                    .catalog-element-info{
+                        display: block;
+                        .catalog-element-description{
+                            width: 100%;
+                        }
+                    }
+                }
+
+                .basket-wraper{
+                    .basket-items-wrapper{
+                        .basket-catalog-item{
+                            .backet-image{
+                                width: 15%;
+                            }
+                            .backet-item-name{
+                                font-size: 12px;
+                                width: 30%;
+                            }
+                            .basket-item-price{
+                                display: none;
+                            }
+                        }
+                    } 
+                    .basket-order-wrapper{
+                        display: block;
+                        .basket-form-wrapper{
+                            width: 100%;
+                            .basket-form-payment-delivery{
+                                display: block;
+                                .basket-form-payment-wrapper, .basket-form-delivery-wrapper{
+                                    width: 100%;
+                                }
+                            }
+                        }
+                        .basket-total{
+                            display: block;
+                            width: 100%;
+                        }
+                    }
+                } 
+                
             }
             aside{
                 margin-bottom: 0;
+                .news-preview{
+                    display: none;
+                }
             }
         }
 

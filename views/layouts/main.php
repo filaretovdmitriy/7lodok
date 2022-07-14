@@ -46,6 +46,11 @@ AppAsset::register($this);
         <div class="site-wrapper">
             <header>
                 <div class="header-wrapper page-wrapper">
+                    <div class="burger-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                     <div class="logo-wrapper">
                         <div class="logo"><a href="/"><img src="<?= AppAsset::path('images/logo.svg') ?>" name="" /></a></div>
                     </div>
@@ -78,7 +83,7 @@ AppAsset::register($this);
 
             <div class="menu-wrapper page-wrapper">
                 <nav>
-                    <div class="catalog-toggle"><a class="catalog-toggle-link" href="#">Каталог</a></div>
+                    <div class="catalog-toggle"><a class="catalog-toggle-link" href="/catalog">Каталог</a></div>
                     <?= app\widgets\TopMenu::widget() ?>
                 </nav>
             </div>

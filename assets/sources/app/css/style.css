@@ -76,6 +76,13 @@ header .header-wrapper {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .header-wrapper .burger-btn {
+  display: none;
 }
 
 header .header-wrapper .logo-wrapper {
@@ -606,6 +613,26 @@ header .header-wrapper .basket.empty .basket-empty-caption {
   margin-bottom: 16px;
 }
 
+.main-wrapper main .images-gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.main-wrapper main .images-gallery .image-gallery-element {
+  width: 25%;
+  padding: 10px;
+}
+
+.main-wrapper main .images-gallery .image-gallery-element img {
+  max-width: 100%;
+}
+
 .main-wrapper main .catalog-categories-main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -754,6 +781,8 @@ header .header-wrapper .basket.empty .basket-empty-caption {
   margin-bottom: 16px;
   font-size: 12px;
   color: #969696;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .main-wrapper main .inner-page-text .breadcrumbs li {
@@ -953,6 +982,14 @@ header .header-wrapper .basket.empty .basket-empty-caption {
           align-items: center;
 }
 
+.main-wrapper main .basket-wraper .basket-items-wrapper .basket-catalog-item .basket-delete-good {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: url(../images/delete-icon.svg) no-repeat;
+  background-size: contain;
+}
+
 .main-wrapper main .basket-wraper .basket-items-wrapper .basket-catalog-item .basket-item-count {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1003,10 +1040,14 @@ header .header-wrapper .basket.empty .basket-empty-caption {
       -ms-flex-pack: justify;
           justify-content: space-between;
   gap: 10px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper {
   width: 75%;
+  margin-bottom: 10px;
 }
 
 .main-wrapper main .basket-wraper .basket-order-wrapper .basket-form-wrapper .radio {

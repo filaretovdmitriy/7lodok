@@ -7,12 +7,20 @@ $(document).ready(function () {
         fade: true,
     });
 
-    
-
+    $(".burger-btn").click(function() {
+        $(this).toggleClass('active');
+        $('.menu-wrapper').toggleClass('active');
+    });
+   
 
 });
-
-
+/*
+$('.js-burger-btn').on('click', function(){
+    $(this).toggleClass('active');
+    console.log('!');
+    $(this).closest('header').find('.header-top-row-wrap').slideToggle();
+});  
+*/
 /*
 var html5Slider = document.getElementById('input-range');
 var inputNumbermin = document.getElementById('input-number-min');

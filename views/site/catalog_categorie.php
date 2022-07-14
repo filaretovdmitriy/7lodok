@@ -157,7 +157,12 @@ use yii\widgets\Breadcrumbs;
                                             <?= $item->name ?>
                                         </a>
                                         <div class="item-price"><?= $item->price ?>руб</div>
-                                        <div class="item-button add-to-cart">В корзину</div>
+                                        <a href="<?= \yii\helpers\Url::to([
+                                                'site/catalog_element',
+                                                'catalog_categorie_alias' => $categorie->alias,
+                                                'catalog_id' => $item->id,
+                                                'catalog_alias' => $item->alias,
+                                            ]) ?>" class="item-button add-to-cart">Купить</a>
                                     </div>
                                 </div>
                                 <?}?>
