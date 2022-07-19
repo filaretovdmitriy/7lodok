@@ -560,7 +560,7 @@ header{
                 grid-template-columns: repeat(4, 1fr);
                 grid-column-gap: 16px;
                 margin-bottom: 32px;
-
+                grid-row-gap: 16px;
                 .catalog-item{
                     border:1px solid $border-gray;
                     
@@ -678,6 +678,21 @@ header{
                 margin-bottom: 20px;
                 .slider-image-wrapper{
                     width: 50%;
+                }
+                .carousel-images{
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    a{
+                        padding: 10px;
+                        margin-left:10px;
+                        margin-bottom: 10px;
+                        border:1px solid $border-gray;
+                        img{
+                            max-width: 100%;
+                        }
+                    }
+                    
                 }
                 .catalog-element-description{
                     width: 50%;

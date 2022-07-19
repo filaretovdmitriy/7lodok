@@ -10,14 +10,16 @@ use yii\widgets\Breadcrumbs;
         <div class="slider-image-wrapper">
             <div class="main-image">
                     <?php if (!empty($catalog->image)) { ?>
-                        <a href="<?= $catalog->getPath('image') ?>"><img src="<?= $catalog->getResizePath('image', 400, 400) ?>" alt="<?= $catalog->name ?>"></a>
+                        <a href="<?= $catalog->getPath('image') ?>" data-fancybox="catalog-element"><img src="<?= $catalog->getResizePath('image', 400, 400) ?>" alt="<?= $catalog->name ?>"></a>
                     <?php } ?>
             </div>
-            <?php foreach ($catalog->images as $pic) { ?>
+            <?php if(!empty($catalog->images)){?>
                 <div class="carousel-images">
-                    <a><img src="<?= $pic->getResizePath('image', 50, 50) ?>" alt="<?= $pic->name ?>"/></a>
+                <?php foreach ($catalog->images as $pic) { ?>
+                    <a  href="<?= $pic->getPath('image') ?>" data-fancybox="catalog-element"><img src="<?= $pic->getResizePath('image', 50, 50) ?>" alt="<?= $pic->name ?>"/></a>
+                <?php } ?>
                 </div>
-            <?php } ?>
+            <?}?>
         </div>
         <div class="catalog-element-description">
             <?/*<div class="catalog-rate">

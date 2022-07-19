@@ -713,6 +713,7 @@ header .header-wrapper .basket.empty .basket-empty-caption {
       grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 16px;
   margin-bottom: 32px;
+  grid-row-gap: 16px;
 }
 
 .main-wrapper main .catalog-list .catalog-items .catalog-item {
@@ -859,6 +860,29 @@ header .header-wrapper .basket.empty .basket-empty-caption {
 
 .main-wrapper main .catalog-element-item .catalog-element-info .slider-image-wrapper {
   width: 50%;
+}
+
+.main-wrapper main .catalog-element-item .catalog-element-info .carousel-images {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main-wrapper main .catalog-element-item .catalog-element-info .carousel-images a {
+  padding: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #eaebec;
+}
+
+.main-wrapper main .catalog-element-item .catalog-element-info .carousel-images a img {
+  max-width: 100%;
 }
 
 .main-wrapper main .catalog-element-item .catalog-element-info .catalog-element-description {
